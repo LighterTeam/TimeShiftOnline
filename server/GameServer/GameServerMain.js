@@ -13,7 +13,7 @@ var G_GameServer = {
 // 连接大厅
 var G_HallSocket = tcp.CreateClient(cfg.HallServerPort, cfg.HallServerIP,
     function () {
-        TSLog.Info("游戏服连接大厅服成功!");
+        TSLog.info("游戏服连接大厅服成功!");
 
         // 请求大厅注册
         var sPacket = {
@@ -51,7 +51,7 @@ var Pool_GW = {}; // Key: 网关UUID Value: Socket
 // 消息处理
 function Msg_EnterGame(oPacket) {
     Pool_Room[oPacket.Room.RoomID] = oPacket.Room;
-    TSLog.Debug("房间数量:" + Object.keys(Pool_Room).length + " 新加入房间ID:" + oPacket.Room.RoomID);
+    TSLog.debug("房间数量:" + Object.keys(Pool_Room).length + " 新加入房间ID:" + oPacket.Room.RoomID);
 
     for (var iUUID in oPacket.Room.ClientArr) {
         Pool_UUID_ROOM[iUUID] = oPacket.Room.RoomID;
@@ -82,7 +82,7 @@ function Msg_EnterGame(oPacket) {
         hSocket.IP = iter.IP;
         hSocket.Room = oPacket.Room;
 
-        TSLog.Debug("连接网关 Port:" + hSocket.Port + " IP:" + hSocket.IP + " UUID:" + hSocket.UUID);
+        TSLog.debug("连接网关 Port:" + hSocket.Port + " IP:" + hSocket.IP + " UUID:" + hSocket.UUID);
         Pool_GW[hSocket.UUID] = hSocket;
 
         //通知网关.更改该UUID的玩家.与Hall断开路由.转而与本游戏服路由.
@@ -112,7 +112,7 @@ function ClientMsgProcess(sBuffer) {
             };
             GS_SendBuffer(oPacket.UUID, JSON.stringify(sPacket));
 
-            TSLog.Debug("玩家离开游戏房间:" + oPacket.UUID);
+            TSLog.debug("玩家离开游戏房间:" + oPacket.UUID);
 
             //处理Room. 如果玩家都离线了. 则删除房子.并通知大厅.更新 GS的房子数数据
             var roomID = Pool_UUID_ROOM[oPacket.UUID];

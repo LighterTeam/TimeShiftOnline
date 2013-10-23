@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameServer/GameServerMain.js" afterPath="$PROJECT_DIR$/GameServer/GameServerMain.js" />
-      <change type="MODIFICATION" beforePath="E:\NodeProject\LighterWebPlatform\ClientGame\PuPlantGame\src\TSGameLayer.js" afterPath="E:\NodeProject\LighterWebPlatform\ClientGame\PuPlantGame\src\TSGameLayer.js" />
-    </list>
+    <list default="true" id="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" name="Default" comment="" />
     <ignored path="LighterWebPlatform.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1365646194320" ignored="false" />
+    <file path="/Dummy.txt" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1382533091027" ignored="false" />
     <file path="/TCP.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1365393323261" ignored="false" />
     <file path="/Config.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1382515728093" ignored="false" />
     <file path="/GateWayProcess.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1365249754489" ignored="false" />
@@ -36,7 +33,7 @@
     <file path="/TSHallLayer.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1365585015124" ignored="false" />
     <file path="/TSRoomLayer.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1365513514842" ignored="false" />
     <file path="/TSJoinLayer.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1365512837422" ignored="false" />
-    <file path="/GameServerMain.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1382525771327" ignored="false" />
+    <file path="/GameServerMain.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1382533159008" ignored="false" />
     <file path="/HTTPServer.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1368258289304" ignored="false" />
     <file path="/Client.js" changelist="efacb91a-2bd8-4e9b-8359-ba34d9cf852f" time="1382413046359" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -148,10 +145,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameServerMain.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GameServerMain.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GameServer/GameServerMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="17" selection-start="3940" selection-end="3940" vertical-scroll-proportion="0.570632">
+            <state line="10" column="2" selection-start="230" selection-end="230" vertical-scroll-proportion="8.36">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TSLog.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Common/TSLog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="8" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Common/Config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="28" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="20" selection-start="1334" selection-end="1334" vertical-scroll-proportion="0.7685393">
               <folding />
             </state>
           </provider>
@@ -187,18 +211,17 @@
         <option value="$PROJECT_DIR$/UnitTest/Client/Client.js" />
         <option value="$PROJECT_DIR$/HttpServer/WebRoot/index.html" />
         <option value="$PROJECT_DIR$/AdaptServer/AdaptServerMain.js" />
-        <option value="$PROJECT_DIR$/Common/Config.js" />
-        <option value="$PROJECT_DIR$/HTTPServer/WebRoot/index.html" />
         <option value="$PROJECT_DIR$/HallServer/HallSystem.js" />
+        <option value="$PROJECT_DIR$/Common/Config.js" />
         <option value="$PROJECT_DIR$/GameServer/GameServerMain.js" />
+        <option value="$PROJECT_DIR$/HTTPServer/WebRoot/index.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1374" />
-    <option name="height" value="716" />
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="829" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -280,16 +303,16 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="JavaScript.Libraries" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="E:/EnelProject/LighterWebPlatform" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/HTTPServer/HTTPServer.js" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="Node.js.HTTPServer.js">
+  <component name="RunManager" selected="Node.js.Mac_HTTPServer.js">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -370,7 +393,32 @@
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
-    <list size="8">
+    <configuration default="false" name="Mac_AdaptServerMain.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="AdaptServer/AdaptServerMain.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Mac_GateWayServerMain.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="GateWayServer/GateWayServerMain.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Mac_HallServerMain.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="HallServer/HallServerMain.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Mac_GameServerMain.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="GameServer/GameServerMain.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Mac_HTTPServer.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="HTTPServer.js" working-dir="$PROJECT_DIR$/HTTPServer">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <list size="13">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.WSClient" />
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Game" />
       <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.XXXXXX" />
@@ -379,6 +427,11 @@
       <item index="5" class="java.lang.String" itemvalue="Node.js.HallServerMain.js" />
       <item index="6" class="java.lang.String" itemvalue="Node.js.GameServerMain.js" />
       <item index="7" class="java.lang.String" itemvalue="Node.js.HTTPServer.js" />
+      <item index="8" class="java.lang.String" itemvalue="Node.js.Mac_AdaptServerMain.js" />
+      <item index="9" class="java.lang.String" itemvalue="Node.js.Mac_GateWayServerMain.js" />
+      <item index="10" class="java.lang.String" itemvalue="Node.js.Mac_HallServerMain.js" />
+      <item index="11" class="java.lang.String" itemvalue="Node.js.Mac_GameServerMain.js" />
+      <item index="12" class="java.lang.String" itemvalue="Node.js.Mac_HTTPServer.js" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -436,17 +489,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1374" height="716" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="829" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.251235" sideWeight="0.6106965" order="1" side_tool="false" content_ui="tabs" x="985" y="126" width="356" height="358" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20774385" sideWeight="0.7216312" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2074806" sideWeight="0.7229255" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35231316" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20327625" sideWeight="0.7216312" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291815" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2783688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27707455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -490,7 +543,7 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
     <option name="LIMIT_HISTORY" value="true" />
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
@@ -525,6 +578,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GameServer/GameServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="22" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0">
@@ -541,9 +601,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="21" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="75" column="21" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/index.html">
@@ -567,11 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.WebStorm6/system/extLibs/nodejs-v0.10.5-src/core-modules-sources/lib/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="16" selection-start="3181" selection-end="3181" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="122" column="24" selection-start="3406" selection-end="3406" vertical-scroll-proportion="0.0">
@@ -581,30 +634,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="19" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/Config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="36" selection-start="978" selection-end="978" vertical-scroll-proportion="-31.617647">
-          <folding />
-        </state>
+        <state line="88" column="19" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="5" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="18" column="5" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
@@ -621,6 +656,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Common/Config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="28" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Common/TSLog.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="8" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.0">
@@ -630,7 +672,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GameServer/GameServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="17" selection-start="3940" selection-end="3940" vertical-scroll-proportion="0.570632">
+        <state line="10" column="2" selection-start="230" selection-end="230" vertical-scroll-proportion="8.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="20" selection-start="1334" selection-end="1334" vertical-scroll-proportion="0.7685393">
           <folding />
         </state>
       </provider>
