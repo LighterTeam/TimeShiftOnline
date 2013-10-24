@@ -38,12 +38,8 @@
 
         // initialize
         window.onload = function() {
-            var UURL = "127.0.0.1"//"spiritring.xicp.net"
-            var GWCfgList = {};
-            GWCfgList[20000] = 20000//26502
-            GWCfgList[20001] = 20001//43183
-            GWCfgList[20002] = 20002//43596
-            var AdaptSCfgPort = 9901//26498 // 9901
+            var UURL = "127.0.0.1";//"spiritring.xicp.net"
+            var AdaptSCfgPort = 9901;//26498 // 9901
 
             input = document.getElementById('input');
             G_Output = document.getElementById('output');
@@ -59,7 +55,7 @@
                         switch(oPacket.MM)
                         {
                             case "ConnectGateWay":
-                                ConnectGateWay(UURL, GWCfgList[oPacket.Port]);
+                                ConnectGateWay(UURL, oPacket.Port);
                                 G_Output.innerHTML += "" + oPacket.Port
                                 break;
                         }
@@ -69,11 +65,11 @@
             );
 
             function ConnectGateWay(sIP, iPORT) {
-                G_hSocket.PORT = iPORT;
-                G_hSocket.IP = sIP;
                 G_hSocket = WebSocketEngine(sIP, iPORT,
                         function(){
                             G_Output.innerHTML += "<strong>网关链接成功!</strong> Port:" + iPORT + " IP:" + sIP + "<br>";
+                            G_hSocket.PORT = iPORT;
+                            G_hSocket.IP = sIP;
                         },
 
                         function(oPacket){

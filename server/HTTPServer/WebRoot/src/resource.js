@@ -34,7 +34,6 @@ var s_chess4 = dirImg + "chess4.png";
 var s_chess5 = dirImg + "chess5.png";
 var s_chess6 = dirImg + "chess6.png";
 
-
 //music
 var s_bgMusic = dirMusic + "bgMusic.mp3";
 var s_mainMainMusic = dirMusic + "mainMainMusic.mp3";
