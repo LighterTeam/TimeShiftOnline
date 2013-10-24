@@ -13,16 +13,16 @@ var log = require("../Common/TSLog")
 // 初始化Log系统
 TSLog = log.create(log.INFO, "HallServer.log")
 
-//玩家池
+// 玩家池
 var Pool_User = {UUID:{}, NAME:{}};
 
-//房间ID分配器
+// 房间ID分配器
 var G_RoomIDAdapt = 0;
 
-//通过UUID查找ROOMID的查找器
+// 通过UUID查找ROOMID的查找器
 var Pool_UUID_ROOM = {};
 
-//房间池
+// 房间池
 var Pool_Room = {}; //Key: RoomID Value: CRoom
 function CRoom(){
     this.ClientArr = {}; //Key: PUUID, Value: Name
@@ -35,7 +35,7 @@ function CRoom(){
 var Pool_GateWaySocket = {};
 
 //游戏服ID分配器
-var G_GameServerIDAdapt = cfg.GameServerIDAdapt;
+var G_GameServerIDAdapt = 0;
 var Pool_GameServerSocket = {}; //包含游戏服上面的所有信息. Key:UUID Value:CGameServer
 function CGameServer(){
     this.RoomNumber = 0;
@@ -80,7 +80,11 @@ function HallSystem(){
     };
 
     this.GS_RemoveRoom = function(oPacket) {
-        Pool_GameServerSocket[oPacket.GSID].RoomNumber--;
+        if (oPacket.GSID in Pool_GameServerSocket) {
+            Pool_GameServerSocket[oPacket.GSID].RoomNumber--;
+        } else {
+            TSLog.error("GS_RemoveRoom Pool_GameServerSocket not find gsid:" + oPacket.GSID);
+        }
     };
 
     this.SendBuffer = function(iUUID, sPacket) {
@@ -305,7 +309,7 @@ function HallSystem(){
         Pool_User.UUID[iUUID] = new def.UserStruct(iUUID, sName, sPassword);
         Pool_User.NAME[sName] = Pool_User.UUID[iUUID];
 
-        console.log("大厅的玩家数量:" + Object.keys(Pool_User.UUID).length);
+        TSLog.init("大厅的玩家数量:" + Object.keys(Pool_User.UUID).length);
 
         //通知玩家登陆成功.
         var sPacket = {

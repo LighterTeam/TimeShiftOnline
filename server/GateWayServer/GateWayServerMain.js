@@ -57,7 +57,7 @@ var G_PoolUUIDInGameServer = {};
 function RunServer_TCP(iPORT, iUUID) {
     tcp.CreateServer(iPORT,
         function(){
-            console.log("GateWay TCP Init Success! Port:" + iPORT);
+            TSLog.trace("CLient GateWay TCP Init Success! Port:" + iPORT);
             var sPacket = {};
             sPacket.MM = "GW_RegGateWay"; //客户端自动连接网关操作
             sPacket.IP = cfg.GateWayServerIP;
@@ -77,7 +77,7 @@ function RunServer_WS(iPORT, iUUID) {
     // 创建客户端服务器
     ws.CreateServer(iPORT,
         function(){
-            console.log("GateWay WS Init Success! Port:" + iPORT);
+            TSLog.trace("Client GateWay WS Init Success! Port:" + iPORT);
             var sPacket = {};
             sPacket.MM = "GW_RegGateWay"; //客户端自动连接网关操作
             sPacket.IP = cfg.GateWayServerIP;
@@ -156,7 +156,7 @@ function ClientServer_Join(hSocket) {
 function RunServer(iPORT, iUUID) {
     G_GateWayTCP = tcp.CreateServer(iPORT,
         function () {
-            console.log("GateWay TCP Init Success! Port:" + iPORT + " UUID:" + iUUID);
+            TSLog.trace("GateWay TCP Init Success! Port:" + iPORT + " UUID:" + iUUID);
 
             G_GateWayTCP.UUID = iUUID;
             G_GateWayTCP.PORT = G_GateWayTCP.address().port;
@@ -180,9 +180,7 @@ function RunServer(iPORT, iUUID) {
                             ws.SendBuffer(G_PoolClientSocket[iUUID], JSON.stringify(sPacket));
                         }
                     }
-
                     return;
-
                 case "LeaveGame":
                     var iUUID = oPacket.UUID;
                     delete G_PoolUUIDInGameServer[iUUID];
@@ -192,7 +190,7 @@ function RunServer(iPORT, iUUID) {
             // 玩家消息路由
             var iUUID = oPacket.UUID;
             if (!(iUUID in G_PoolClientSocket)){
-                console.log("网关获取了 错误的玩家UUID:" + iUUID + " G_GateWay.UUID:" + G_GateWay.UUID);
+                TSLog.error("网关获取了 错误的玩家UUID:" + iUUID + " G_GateWay.UUID:" + G_GateWay.UUID);
                 return;
             }
             ws.SendBuffer(G_PoolClientSocket[iUUID], JSON.stringify(oPacket));
@@ -236,7 +234,7 @@ function HallMessageRoute(sBuffer) {
     var iUUID = oPacket.UUID;
 
     if (!(iUUID in G_PoolClientSocket)){
-        console.log("网关获取了 错误的玩家UUID:" + iUUID + " G_GateWay.UUID:" + G_GateWay.UUID);
+        TSLog.error("网关获取了 错误的玩家UUID:" + iUUID + " G_GateWay.UUID:" + G_GateWay.UUID);
         return;
     }
     var hSocket = G_PoolClientSocket[iUUID];

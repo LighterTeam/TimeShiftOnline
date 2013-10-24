@@ -17,7 +17,6 @@ module.exports = {
     HTTPServerPort: 9010, // 唯一 游戏的位置
     HTTPServerIP: "127.0.0.1",
 
-    GameServerIDAdapt: 1000, // 游戏服务器规则
     GameServerMaxRoom: 20, // 一个游戏服务器 最多多少个房子
 
     end: null

@@ -14,13 +14,12 @@ function CGateWay(Port, IP, Socket, Type, UID) {
     this.IP = IP;
     this.Socket = Socket;
     this.Type = Type; //1:TCP 2:WS
-    this.Number = 0;
 }
 
 // 启动适配服
 tcp.CreateServer(cfg.AdaptServerPort,
     function() {
-        console.log("Timeshift AdaptTCPServer Success!");
+        TSLog.trace("Timeshift AdaptServer Success! PORT:" + cfg.AdaptServerPort);
     },
 
     function(hSocket, sBuffer) {
@@ -65,21 +64,18 @@ function GateWay_GetUUID(hSocket){
     sPacket["PORT_TCP"] = iPORT + cfg.GateWayServerPort_TCP;
 
     tcp.SendBuffer(hSocket, JSON.stringify(sPacket));
-
-    uuid.G_SetSU(hSocket, iUUID);
 }
 
 function GateWay_RegGateWay(hSocket, oPacket) {
     var GW = new CGateWay(oPacket.Port, oPacket.IP, hSocket, oPacket.Type, oPacket.UUID);
     Pool_GateWay.push(GW);
-    console.log("GateWay Regist Success! Port:" + oPacket.Port + " IP:" + oPacket.IP +
+    TSLog.trace("GateWay Regist Success! Port:" + oPacket.Port + " IP:" + oPacket.IP +
         " Type:" + oPacket.Type + " UID:" + oPacket.UUID);
 }
 
 function Hall_ConnectHall() {
     for (var i = 0 ; i < Pool_GateWay.length ; i++) {
         var GW = Pool_GateWay[i];
-
         var sPacket = {
             MM:"HS_ConnectHall"
         };
@@ -121,7 +117,7 @@ var G_ClientNumberWS_Count = 0;
 
 tcp.CreateServer(cfg.AdaptServerPort_TCP,
     function () {
-        TSLog.trace("Timeshift AdaptTCPServer Success! PORT:" + cfg.AdaptServerPort_TCP);
+        TSLog.trace("Timeshift ClientAdaptTCPServer Success! PORT:" + cfg.AdaptServerPort_TCP);
     },
 
     function (hSocket, sBuffer) {
@@ -163,7 +159,7 @@ tcp.CreateServer(cfg.AdaptServerPort_TCP,
 
 ws.CreateServer(cfg.AdaptServerPort_WS,
     function () {
-        TSLog.trace("Timeshift AdaptWebSocketServer Success! PORT:" + cfg.AdaptServerPort_WS);
+        TSLog.trace("Timeshift ClientAdaptWebSocketServer Success! PORT:" + cfg.AdaptServerPort_WS);
     },
 
     function (hSocket, sBuffer) {
