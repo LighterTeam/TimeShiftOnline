@@ -24,13 +24,14 @@ var G_HallSocket = tcp.CreateClient(cfg.HallServerPort, cfg.HallServerIP,
 
     function (sBuffer) {
         var oPacket = JSON.parse(sBuffer);
+        TSLog.info("Buffer:" + sBuffer);
         switch(oPacket.MM) {
             case "RegGameServer": //大厅分配的游戏服UUID
                 G_GameServer.UUID = oPacket.UUID;
                 TSLog = log.create(log.INFO, "GameServerLog"+G_GameServer.UUID+".log");
                 break;
             case "EnterGame":
-                if(G_GameServer.UUID == 0) {
+                if(G_GameServer.UUID != 0) {
                     Msg_EnterGame(oPacket);
                 }
                 break;

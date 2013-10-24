@@ -1,6 +1,8 @@
 var tcp = require("../LighterWebEngine/TCP");
 var ws = require("../LighterWebEngine/WebSocket");
 var cfg = require("../Common/Config");
+var log = require("../Common/TSLog");
+TSLog = log.create(log.INFO, "GateWayServerMain.log");
 
 /////////////////////////////////////////////////////////
 // 向AdapterServer请求UUID和端口号
@@ -14,12 +16,20 @@ var hASSocket = tcp.CreateClient(cfg.AdaptServerPort, "",
         var oPacket = JSON.parse(sBuffer);
         switch(oPacket.MM){
             case "GW_GetUuidPort":
-                var iPORT = parseInt(oPacket.PORT);
+                var iPORT_WS = parseInt(oPacket.PORT_WS);
+                var iPORT_TCP = parseInt(oPacket.PORT_TCP);
                 var iUUID = parseInt(oPacket.UUID);
-                RunServer_WS(iPORT, iUUID);
-                RunServer(iPORT%cfg.GateWayServerPort+cfg.GateWayServerPort, iUUID);
+
+                G_GateWay.UUID = iUUID;
+                G_GateWay.IP = cfg.GateWayServerIP;
+                TSLog.info("GateWay UUID:" + G_GateWay.UUID + " IP:" + G_GateWay.IP);
+                TSLog = log.create(log.INFO, "GateWayServerMain"+G_GateWay.UUID+".log");
+
+                RunServer_WS(iPORT_WS, iUUID);
+                RunServer_TCP(iPORT_TCP, iUUID);
+                RunServer(cfg.GateWayServerPort + iUUID, iUUID);
                 break;
-            case "HS_ConnectHall":
+            case "HS_ConnectHall": //大厅挂了重新连接大厅
                 //重新连接大厅
                 console.log("重新连接大厅. 成功!");
                 G_HallSocket = tcp.CreateClient(cfg.HallServerPort, cfg.HallServerIP,
@@ -34,9 +44,9 @@ var hASSocket = tcp.CreateClient(cfg.AdaptServerPort, "",
 
 /////////////////////////////////////////////////////////
 // ws服务器启动完成.监听消息
-var G_GateWay = {};
-var G_HallSocket = null;
-var G_GateWayTCP = null;
+var G_GateWay = {}; // 适配服分配的该进程ID
+var G_HallSocket = null; //大厅的Client连接
+var G_GateWayTCP = null; //服务器内部通信使用的TCP
 
 var G_ClientNumber = 0;
 var G_ClientUUID = 0;
@@ -44,83 +54,102 @@ var G_PoolClientSocket = {};
 
 var G_PoolUUIDInGameServer = {};
 
-function RunServer_WS(iPORT, iUUID) {
-    // 创建客户端服务器
-    ws.CreateServer(iPORT,
-        function() {
-            console.log("GateWay WebSocket Init Success! Port:" + iPORT + " UUID:" + iUUID);
+function RunServer_TCP(iPORT, iUUID) {
+    tcp.CreateServer(iPORT,
+        function(){
+            console.log("GateWay TCP Init Success! Port:" + iPORT);
             var sPacket = {};
             sPacket.MM = "GW_RegGateWay"; //客户端自动连接网关操作
             sPacket.IP = cfg.GateWayServerIP;
             sPacket.Port = iPORT;
+            sPacket.Type = 1;
+            sPacket.UUID = iUUID;
             tcp.SendBuffer(hASSocket,JSON.stringify(sPacket));
-
-            G_GateWay.UUID = iUUID;
-            G_GateWay.PORT = iPORT;
-            G_GateWay.IP = cfg.GateWayServerIP;
-
-            //连接大厅
-            G_HallSocket = tcp.CreateClient(cfg.HallServerPort, cfg.HallServerIP,
-                HallConnectSuccess,
-                HallMessageRoute
-            );
+            ClientServer_Init();
         },
+        ClientServer_Msg,
+        ClientServer_Close,
+        ClientServer_Join
+    )
+}
 
-        // 客户端消息转发: 如果玩家在大厅.则转发到大厅. 如果玩家在游戏.则转发到游戏服
-        function(hSocket, sBuffer) {
-            var oPacket = JSON.parse(sBuffer);
-            oPacket.UUID = hSocket.UUID;
-
-            // 通过hSocket.UUID 找对应的Game服Socket.然后把数据转发过去.
-            if (hSocket.UUID in G_PoolUUIDInGameServer) {
-                tcp.SendBuffer(G_PoolUUIDInGameServer[hSocket.UUID],JSON.stringify(oPacket));
-                return;
-            }
-
-            // 如果没有路由到GameServer. 则进入Hall路由
-            if(G_HallSocket == null){
-                console.log("没有连接到大厅服务!");
-                return;
-            }
-            tcp.SendBuffer(G_HallSocket,JSON.stringify(oPacket));
+function RunServer_WS(iPORT, iUUID) {
+    // 创建客户端服务器
+    ws.CreateServer(iPORT,
+        function(){
+            console.log("GateWay WS Init Success! Port:" + iPORT);
+            var sPacket = {};
+            sPacket.MM = "GW_RegGateWay"; //客户端自动连接网关操作
+            sPacket.IP = cfg.GateWayServerIP;
+            sPacket.Port = iPORT;
+            sPacket.Type = 2;
+            sPacket.UUID = iUUID;
+            tcp.SendBuffer(hASSocket,JSON.stringify(sPacket));
+            ClientServer_Init();
         },
-
-        // 客户端断开连接操作:  通知大厅玩家下线
-        function(hSocket, reasonCode, description) {
-            G_ClientNumber --;
-            console.log("close 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
-
-            delete G_PoolClientSocket[hSocket.UUID];
-
-            // 通知大厅玩家断开链接
-            var sPacket = {
-                MM:"ClientOffLine",
-                UUID:hSocket.UUID
-            };
-
-            tcp.SendBuffer(G_HallSocket,JSON.stringify(sPacket));
-
-            // 如果该玩家在GameServer.那么通知GS服.该玩家断线.
-            if (hSocket.UUID in G_PoolUUIDInGameServer) {
-                sPacket = {
-                    MM:"LeaveGame",
-                    UUID:hSocket.UUID
-                };
-                tcp.SendBuffer(G_PoolUUIDInGameServer[hSocket.UUID],JSON.stringify(sPacket));
-            }
-
-        },
-
-        // 客户端登陆成功.分配UUID给客户端.
-        function(hSocket) {
-            G_ClientNumber ++;
-            G_ClientUUID++;
-            hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
-            G_PoolClientSocket[hSocket.UUID] = hSocket;
-            console.log("newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
-        }
+        ClientServer_Msg,
+        ClientServer_Close,
+        ClientServer_Join
     );
 };
+
+function ClientServer_Init() {
+    //连接大厅
+    G_HallSocket = tcp.CreateClient(cfg.HallServerPort, cfg.HallServerIP,
+        HallConnectSuccess,
+        HallMessageRoute
+    );
+}
+
+function ClientServer_Msg(hSocket, sBuffer) {
+    var oPacket = JSON.parse(sBuffer);
+    oPacket.UUID = hSocket.UUID;
+
+    // 通过hSocket.UUID 找对应的Game服Socket.然后把数据转发过去.
+    if (hSocket.UUID in G_PoolUUIDInGameServer) {
+        tcp.SendBuffer(G_PoolUUIDInGameServer[hSocket.UUID],JSON.stringify(oPacket));
+        return;
+    }
+
+    // 如果没有路由到GameServer. 则进入Hall路由
+    if(G_HallSocket == null){
+        console.log("没有连接到大厅服务!");
+        return;
+    }
+    tcp.SendBuffer(G_HallSocket,JSON.stringify(oPacket));
+}
+
+function ClientServer_Close(hSocket) {
+    G_ClientNumber --;
+    console.log("close 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+
+    delete G_PoolClientSocket[hSocket.UUID];
+
+    // 通知大厅玩家断开链接
+    var sPacket = {
+        MM:"ClientOffLine",
+        UUID:hSocket.UUID
+    };
+
+    tcp.SendBuffer(G_HallSocket,JSON.stringify(sPacket));
+
+    // 如果该玩家在GameServer.那么通知GS服.该玩家断线.
+    if (hSocket.UUID in G_PoolUUIDInGameServer) {
+        sPacket = {
+            MM:"LeaveGame",
+            UUID:hSocket.UUID
+        };
+        tcp.SendBuffer(G_PoolUUIDInGameServer[hSocket.UUID],JSON.stringify(sPacket));
+    }
+}
+
+function ClientServer_Join(hSocket) {
+    G_ClientNumber ++;
+    G_ClientUUID++;
+    hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
+    G_PoolClientSocket[hSocket.UUID] = hSocket;
+    console.log("newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+}
 
 function RunServer(iPORT, iUUID) {
     G_GateWayTCP = tcp.CreateServer(iPORT,
@@ -179,7 +208,7 @@ function RunServer(iPORT, iUUID) {
             hSocket.ClientArr = [];
         }
     );
-};
+}
 
 ///////////////////////////////////////////////
 //大厅消息处理

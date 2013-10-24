@@ -1,10 +1,13 @@
 module.exports = {
     AdaptServerPort: 9900, // 唯一 TCP其他服务器
     AdaptServerPort_WS: 9901, // 唯一 WebSocket浏览器使用
+    AdaptServerPort_TCP: 9902, // 唯一 TCP客户端使用
     AdaptServerIP: "127.0.0.1",
 
-    GateWayServerPort: 10000, // TCP其他服务器使用
+    GateWayServerPort: 10000, // 取余用
     GateWayServerPort_WS: 20000, // WebSocket浏览器连接的网关地址 20000起
+    GateWayServerPort_TCP: 30000, // TCP连接的网关地址 30000起
+
     GateWayServerPlayerIDRule: 1000, // UUID规则.UUID中包含网关信息
     GateWayServerIP: "127.0.0.1",
 

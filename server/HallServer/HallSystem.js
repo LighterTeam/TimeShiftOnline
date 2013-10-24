@@ -11,7 +11,7 @@ var def = require("./StructDefine");
 var log = require("../Common/TSLog")
 
 // 初始化Log系统
-TSLog = log.create(log.INFO, "HallServerLog.log")
+TSLog = log.create(log.INFO, "HallServer.log")
 
 //玩家池
 var Pool_User = {UUID:{}, NAME:{}};
@@ -192,13 +192,14 @@ function HallSystem(){
 
     this.Msg_EnterGame = function (iUUID) {
         if (!(iUUID in Pool_UUID_ROOM)) {
+            TSLog.error("Pool_UUID_ROOM 不存在! "+ iUUID);
             return;
         }
         var roomID = Pool_UUID_ROOM[iUUID];
         var room = Pool_Room[roomID];
 
         if (room == null) {
-            TSLog.error("roomID 不存在! "+ roomID)
+            TSLog.error("roomID 不存在! "+ roomID);
             return
         }
 
@@ -277,6 +278,8 @@ function HallSystem(){
                 sPacket.Data = room;
                 this.SendBuffer(sPacket.UUID, sPacket);
             }
+        } else {
+            TSLog.error("加入错误的房间:" + iRoomID);
         }
     };
 
