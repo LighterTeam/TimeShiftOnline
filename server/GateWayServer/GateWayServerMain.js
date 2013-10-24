@@ -102,6 +102,8 @@ function ClientServer_Init() {
 }
 
 function ClientServer_Msg(hSocket, sBuffer) {
+    TSLog.info("Buffer:" + sBuffer);
+
     var oPacket = JSON.parse(sBuffer);
     oPacket.UUID = hSocket.UUID;
 

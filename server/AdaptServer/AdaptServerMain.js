@@ -125,6 +125,7 @@ tcp.CreateServer(cfg.AdaptServerPort_TCP,
     },
 
     function (hSocket, sBuffer) {
+        TSLog.info("Buffer:" + sBuffer);
         var oPacket = JSON.parse(sBuffer);
         switch(oPacket.MM) {
             case "ConnectGateWay":
