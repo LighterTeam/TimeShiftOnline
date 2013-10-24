@@ -27,7 +27,6 @@ var TSGameLayer = cc.Layer.extend({
     //缓存ball
     m_vCacheSpr: [],
 
-
     rand: function(num) {
         return parseInt(Math.random()*num);
     },
