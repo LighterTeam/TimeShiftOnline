@@ -309,7 +309,7 @@ function HallSystem(){
         Pool_User.UUID[iUUID] = new def.UserStruct(iUUID, sName, sPassword);
         Pool_User.NAME[sName] = Pool_User.UUID[iUUID];
 
-        TSLog.init("大厅的玩家数量:" + Object.keys(Pool_User.UUID).length);
+        TSLog.info("大厅的玩家数量:" + Object.keys(Pool_User.UUID).length);
 
         //通知玩家登陆成功.
         var sPacket = {

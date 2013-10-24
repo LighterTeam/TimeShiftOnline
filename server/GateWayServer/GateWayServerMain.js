@@ -69,7 +69,14 @@ function RunServer_TCP(iPORT, iUUID) {
         },
         ClientServer_Msg,
         ClientServer_Close,
-        ClientServer_Join
+        function (hSocket) {
+            G_ClientNumber ++;
+            G_ClientUUID++;
+            hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
+            hSocket.CType = 1;
+            G_PoolClientSocket[hSocket.UUID] = hSocket;
+            TSLog.info("TCP newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+        }
     )
 }
 
@@ -89,7 +96,14 @@ function RunServer_WS(iPORT, iUUID) {
         },
         ClientServer_Msg,
         ClientServer_Close,
-        ClientServer_Join
+        function (hSocket) {
+            G_ClientNumber ++;
+            G_ClientUUID++;
+            hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
+            hSocket.CType = 2;
+            G_PoolClientSocket[hSocket.UUID] = hSocket;
+            TSLog.info("WebSocket newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+        }
     );
 };
 
@@ -145,14 +159,6 @@ function ClientServer_Close(hSocket) {
     }
 }
 
-function ClientServer_Join(hSocket) {
-    G_ClientNumber ++;
-    G_ClientUUID++;
-    hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
-    G_PoolClientSocket[hSocket.UUID] = hSocket;
-    console.log("newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
-}
-
 function RunServer(iPORT, iUUID) {
     G_GateWayTCP = tcp.CreateServer(iPORT,
         function () {
@@ -177,7 +183,7 @@ function RunServer(iPORT, iUUID) {
 
                         if (iUUID in G_PoolClientSocket) {
                             var sPacket = {MM:"EnterGame"};
-                            ws.SendBuffer(G_PoolClientSocket[iUUID], JSON.stringify(sPacket));
+                            SendBufferToClient(iUUID, sPacket);
                         }
                     }
                     return;
@@ -193,7 +199,7 @@ function RunServer(iPORT, iUUID) {
                 TSLog.error("网关获取了 错误的玩家UUID:" + iUUID + " G_GateWay.UUID:" + G_GateWay.UUID);
                 return;
             }
-            ws.SendBuffer(G_PoolClientSocket[iUUID], JSON.stringify(oPacket));
+            SendBufferToClient(G_PoolClientSocket[iUUID], oPacket);
         },
 
         function (hSocket) {
@@ -237,7 +243,11 @@ function HallMessageRoute(sBuffer) {
         TSLog.error("网关获取了 错误的玩家UUID:" + iUUID + " G_GateWay.UUID:" + G_GateWay.UUID);
         return;
     }
-    var hSocket = G_PoolClientSocket[iUUID];
-
-    ws.SendBuffer(hSocket, JSON.stringify(oPacket));
+    SendBufferToClient(iUUID, oPacket);
 };
+
+//发消息给客户端
+function SendBufferToClient(iUUID, oPacket) {
+    var hSocket = G_PoolClientSocket[iUUID];
+    ws.SendBuffer(hSocket, JSON.stringify(oPacket));
+}
