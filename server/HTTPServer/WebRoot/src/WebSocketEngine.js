@@ -22,7 +22,6 @@
     SendBuffer = function(hSocket, sPacket) {
         if ("send" in hSocket) {
             hSocket.send(JSON.stringify(sPacket));
-            TSLog("send")
         }
     }
 }())

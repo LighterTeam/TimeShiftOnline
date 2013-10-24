@@ -113,19 +113,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TSGameLayer.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/TSGameLayer.js">
+      <file leaf-file-name="HallServerMain.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HallServer/HallServerMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="32" selection-start="5013" selection-end="5022" vertical-scroll-proportion="-8.12" vertical-offset="3822" max-vertical-offset="17975">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSocketEngine.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/WebSocketEngine.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="25" selection-start="801" selection-end="801" vertical-scroll-proportion="0.79913604" vertical-offset="230" max-vertical-offset="825">
+            <state line="11" column="31" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="1575">
               <folding />
             </state>
           </provider>
@@ -134,54 +125,25 @@
       <file leaf-file-name="HallSystem.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="217" column="27" selection-start="5962" selection-end="5962" vertical-scroll-proportion="0.0" vertical-offset="4638" max-vertical-offset="8600">
+            <state line="202" column="9" selection-start="5544" selection-end="5544" vertical-scroll-proportion="-13.76" vertical-offset="4706" max-vertical-offset="8825">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/main.js">
+      <file leaf-file-name="TCP.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="17" selection-start="2642" selection-end="2642" vertical-scroll-proportion="0.0" vertical-offset="1209" max-vertical-offset="1975">
+            <state line="109" column="2" selection-start="2458" selection-end="2458" vertical-scroll-proportion="0.53632146" vertical-offset="2378" max-vertical-offset="3025">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestIndex.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/TestIndex.html">
+      <file leaf-file-name="GameServerMain.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameServer/GameServerMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1153" selection-end="1153" vertical-scroll-proportion="-36.02941" vertical-offset="0" max-vertical-offset="3775">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TSMainMenu.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/TSMainMenu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="-9.0" vertical-offset="0" max-vertical-offset="3600">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="768" selection-end="768" vertical-scroll-proportion="-27.205883" vertical-offset="0" max-vertical-offset="3550">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resource.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/resource.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="47" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0" vertical-offset="1075" max-vertical-offset="2850">
+            <state line="2" column="0" selection-start="85" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4000">
               <folding />
             </state>
           </provider>
@@ -198,6 +160,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
     <option name="myDateState">
       <MyDateState />
     </option>
@@ -205,12 +168,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/HttpServer/WebRoot/src/TSGameLayer.js" />
-        <option value="$PROJECT_DIR$/GateWayServer/GateWayServerMain.js" />
         <option value="$PROJECT_DIR$/UnitTest/Client/Client.js" />
         <option value="$PROJECT_DIR$/HttpServer/WebRoot/index.html" />
         <option value="$PROJECT_DIR$/AdaptServer/AdaptServerMain.js" />
-        <option value="$PROJECT_DIR$/HallServer/HallSystem.js" />
         <option value="$PROJECT_DIR$/Common/Config.js" />
         <option value="$PROJECT_DIR$/GameServer/GameServerMain.js" />
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/index.html" />
@@ -221,6 +181,9 @@
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/src/TSMainMenu.js" />
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/main.js" />
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/src/WebSocketEngine.js" />
+        <option value="$PROJECT_DIR$/LighterWebEngine/WebSocket.js" />
+        <option value="$PROJECT_DIR$/HallServer/HallSystem.js" />
+        <option value="$PROJECT_DIR$/LighterWebEngine/TCP.js" />
       </list>
     </option>
   </component>
@@ -282,47 +245,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HTTPServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LighterWebPlatform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTTPServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LighterWebPlatform" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTTPServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="LighterWebEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,19 +453,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="768" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789317" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.35311574" order="1" side_tool="true" content_ui="tabs" x="991" y="79" width="356" height="358" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.37388724" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.384273" order="1" side_tool="true" content_ui="tabs" x="991" y="79" width="356" height="358" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.615727" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35231316" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20327625" sideWeight="0.7216312" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291815" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27299702" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27299702" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -593,26 +516,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/res/b01.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/res/bg01.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/res/bullet.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/res/chess0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/res/chess1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -644,30 +547,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/TestIndex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1153" selection-end="1153" vertical-scroll-proportion="-36.02941" vertical-offset="0" max-vertical-offset="3775">
+        <state line="49" column="0" selection-start="1153" selection-end="1153" vertical-scroll-proportion="2.9447114" vertical-offset="0" max-vertical-offset="3775">
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/TSMainMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="-9.0" vertical-offset="0" max-vertical-offset="3600">
+        <state line="9" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="0.51369864" vertical-offset="0" max-vertical-offset="3600">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="17" selection-start="2642" selection-end="2642" vertical-scroll-proportion="0.0" vertical-offset="1209" max-vertical-offset="1975">
+        <state line="67" column="17" selection-start="2642" selection-end="2642" vertical-scroll-proportion="1.0064795" vertical-offset="1209" max-vertical-offset="1975">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="768" selection-end="768" vertical-scroll-proportion="-27.205883" vertical-offset="0" max-vertical-offset="3550">
+        <state line="37" column="0" selection-start="768" selection-end="768" vertical-scroll-proportion="2.2235577" vertical-offset="0" max-vertical-offset="3550">
           <folding />
         </state>
       </provider>
@@ -679,16 +582,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
+    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/WebSocketEngine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="27" selection-start="5962" selection-end="5962" vertical-scroll-proportion="0.0" vertical-offset="4638" max-vertical-offset="8600">
+        <state line="25" column="5" selection-start="791" selection-end="791" vertical-scroll-proportion="0.62203026" vertical-offset="337" max-vertical-offset="800">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/WebSocketEngine.js">
+    <entry file="file://$PROJECT_DIR$/LighterWebEngine/WebSocket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="25" selection-start="801" selection-end="801" vertical-scroll-proportion="0.79913604" vertical-offset="230" max-vertical-offset="825">
+        <state line="15" column="28" selection-start="415" selection-end="415" vertical-scroll-proportion="0.6028939" vertical-offset="0" max-vertical-offset="1100">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HallServer/HallServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="31" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="1575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameServer/GameServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="85" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4000">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="9" selection-start="5544" selection-end="5544" vertical-scroll-proportion="-13.76" vertical-offset="4706" max-vertical-offset="8825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="2" selection-start="2458" selection-end="2458" vertical-scroll-proportion="0.53632146" vertical-offset="2378" max-vertical-offset="3025">
           <folding />
         </state>
       </provider>

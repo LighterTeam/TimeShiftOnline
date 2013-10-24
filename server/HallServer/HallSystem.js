@@ -8,6 +8,10 @@
 var tcp = require("../LighterWebEngine/TCP");
 var cfg = require("../Common/Config");
 var def = require("./StructDefine");
+var log = require("../Common/TSLog")
+
+// 初始化Log系统
+TSLog = log.create(log.INFO, "HallServerLog.log")
 
 //玩家池
 var Pool_User = {UUID:{}, NAME:{}};
@@ -192,6 +196,11 @@ function HallSystem(){
         }
         var roomID = Pool_UUID_ROOM[iUUID];
         var room = Pool_Room[roomID];
+
+        if (room == null) {
+            TSLog.error("roomID 不存在! "+ roomID)
+            return
+        }
 
         // 找到压力比较小的GameServer;
         var gs = null;

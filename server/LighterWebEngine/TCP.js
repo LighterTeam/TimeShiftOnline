@@ -1,3 +1,4 @@
+"use strict";
 
 var net = require('net');
 var ExBuffer = require('ExBuffer');
@@ -15,7 +16,12 @@ function CreateServer(iPort, funInit, funReceive, funClose, funConnect) {
 
         // 监听收包
         hSocket.on('data', function(data) {
-            exBuffer.put(data);
+            try {
+                exBuffer.put(data);
+            }
+            catch(e){
+                console.log("Server TCP: " + e.stack);
+            }
         });
 
         // 断开
@@ -25,7 +31,7 @@ function CreateServer(iPort, funInit, funReceive, funClose, funConnect) {
 
         //数据错误事件
         hSocket.on('error',function(exception){
-            console.log('socket error:' + exception);
+            //console.log('socket error:' + exception);
             hSocket.end();
         });
 
@@ -63,7 +69,12 @@ function CreateClient(iPort, sHost, funInit, funReceive) {
     });
 
     hSocket.on('data', function(data) {
-        exBuffer.put(data);
+        try {
+            exBuffer.put(data);
+        }
+        catch(e){
+            console.log("Client TCP: " + e.stack);
+        }
     });
 
     hSocket.on('error',function(error){

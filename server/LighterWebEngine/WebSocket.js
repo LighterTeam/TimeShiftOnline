@@ -16,7 +16,11 @@ function CreateServer(port, funInit, funReceive, funClose, funConnect) {
         funConnect(hSocket);
 
         hSocket.on('message', function (msg) {
-            funReceive(hSocket, msg);
+            try {
+                funReceive(hSocket, msg);
+            } catch(e){
+                console.log("WebSocket: " + e.stack);
+            }
         });
 
         hSocket.on('disconnect', function () {
