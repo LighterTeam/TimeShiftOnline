@@ -1,5 +1,7 @@
 ﻿#include "TSEngine/TSTCP.h"
 #include "TSEngine/TSEvent.h"
+#include "TSEngine/TSLog.h"
+
 #include "TSMainScene.h"
 #include "TSConnect.h"
 
@@ -88,20 +90,20 @@ void TSMainLayout::TSEventConnectGateWay( Json::Value jValue)
     //}
 
     TSTCP* pT = TSTCP::GetSingleTon();
-    CCLog("TSEventConnectGateWay: %s", jValue.toStyledString().c_str());
+    TSLog("TSEventConnectGateWay: %s", jValue.toStyledString().c_str());
     TSTCP::GetSingleTon()->CloseSocket(); // 断开网关
     
     // 连接网关服
     if (pT->CreateClient(jValue["IP"].asString(),jValue["Port"].asInt()) == 0) {
-        CCLog("GateWayConnect Failed!");
+        TSLog("GateWayConnect Failed!");
     } else {
-        CCLog("GateWayConnect Success!");
+        TSLog("GateWayConnect Success!");
     }
 }
 
 void TSMainLayout::TSEventDisconnect( std::string sBuffer )
 {
-    CCLog("TSEventDisconnect %s", sBuffer.c_str());
+    TSLog("TSEventDisconnect %s", sBuffer.c_str());
     TSConnect::getSingleTon()->ReConnect();
 }
 

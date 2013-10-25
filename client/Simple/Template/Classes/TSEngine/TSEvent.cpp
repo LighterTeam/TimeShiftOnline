@@ -1,4 +1,5 @@
 #include "TSEvent.h"
+#include "TSLog.h"
 #include "..\CCCommon.h"
 
 void TSEvent::RegistEvent( string sEventKey, void* pInst, TpInstEventFun pFun )
@@ -29,7 +30,7 @@ void TSEvent::SendMsg( string sEventKey, string sBuffer )
         }
     }
     else {
-        cocos2d::CCLog("String NotFound is message regist:%s", sEventKey.c_str());
+        TSLog("String NotFound is message regist:%s", sEventKey.c_str());
     }
 }
 
@@ -66,7 +67,7 @@ void TSEvent::JSON_SendMsg( string sEventKey, Json::Value jValue )
         }
     }
     else {
-        cocos2d::CCLog("Json NotFound is message regist:%s", sEventKey.c_str());
+        TSLog("Json NotFound is message regist:%s", sEventKey.c_str());
     }
 }
 

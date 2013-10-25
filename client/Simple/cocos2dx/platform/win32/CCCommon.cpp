@@ -23,10 +23,57 @@ THE SOFTWARE.
 ****************************************************************************/
 #include "platform/CCCommon.h"
 #include "CCStdC.h"
+#include <fstream>
+
+#include <time.h> 
+#include <stdio.h> 
+#include <string>
 
 NS_CC_BEGIN
 
-#define MAX_LEN         (cocos2d::kMaxLogLen + 1)
+#define MAX_LEN (cocos2d::kMaxLogLen + 1)
+
+void CCLog2(const char* filename, int lineNumber, const char * pszFormat, ...)
+{
+    static std::ofstream* outfile = 0;
+    time_t t = time(0); 
+    char tmp[64]; 
+    strftime( tmp, sizeof(tmp), "%Y-%m-%d-%H-%M-%S",localtime(&t)); 
+    if (outfile == 0)
+    {
+        std::string& nn = std::string("") + tmp + "-TSLog.log";
+        outfile = new std::ofstream(nn.c_str());
+    }
+
+    char szBuf[MAX_LEN];
+
+    va_list ap;
+    va_start(ap, pszFormat);
+    vsnprintf_s(szBuf, MAX_LEN, MAX_LEN, pszFormat, ap);
+    va_end(ap);
+
+    WCHAR wszBuf[MAX_LEN] = {0};
+    MultiByteToWideChar(CP_UTF8, 0, szBuf, -1, wszBuf, sizeof(wszBuf));
+    OutputDebugStringW(wszBuf);
+    OutputDebugStringA("\n");
+
+    WideCharToMultiByte(CP_ACP, 0, wszBuf, sizeof(wszBuf), szBuf, sizeof(szBuf), NULL, FALSE);
+
+    WORD colorOld = 0;
+    HANDLE handle = ::GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(handle, &csbi);
+    colorOld = csbi.wAttributes;
+    SetConsoleTextAttribute(handle, 2);
+    printf("[%s]", tmp);
+    SetConsoleTextAttribute(handle, 6);
+    printf("%s\n", szBuf);
+    SetConsoleTextAttribute(handle, 3);
+    printf("[%s:%d]\n", filename, lineNumber);
+    SetConsoleTextAttribute(handle, colorOld);
+
+    *outfile<<"["<<tmp<<"] "<<szBuf<<" ["<<filename<<":"<<lineNumber<<"]"<<"\n";
+}
 
 void CCLog(const char * pszFormat, ...)
 {
@@ -43,6 +90,7 @@ void CCLog(const char * pszFormat, ...)
     OutputDebugStringA("\n");
 
     WideCharToMultiByte(CP_ACP, 0, wszBuf, sizeof(wszBuf), szBuf, sizeof(szBuf), NULL, FALSE);
+
     printf("%s\n", szBuf);
 }
 

@@ -41,7 +41,7 @@ static const int kMaxLogLen = 16*1024;
 @brief Output Debug message.
 */
 void CC_DLL CCLog(const char * pszFormat, ...);
-
+void CC_DLL CCLog2(const char* filename, int lineNumber, const char * pszFormat,...);
 /**
  * lua can not deal with ...
  */

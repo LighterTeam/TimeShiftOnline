@@ -92,6 +92,9 @@
     <ClInclude Include="..\Classes\TSConnect.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\TSEngine\TSLog.h">
+      <Filter>TSEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,6 +132,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\TSConnect.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TSEngine\TSLog.cpp">
+      <Filter>TSEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

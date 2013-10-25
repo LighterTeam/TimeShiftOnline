@@ -1,5 +1,5 @@
-#include "TSTCP.h"
-//#include "TSCommon.h"
+﻿#include "TSTCP.h"
+#include "TSLog.h"
 #include "TSSocket.h"
 #include "TSEvent.h"
 #include "exbuffer.h"
@@ -32,7 +32,7 @@ static void recvHandle(unsigned char *rbuf, size_t len)
     {
         memcpy(buffer, (char*)(rbuf), len);    
         std::string& serverRecv = std::string("ServerRecv: ") + buffer;
-        cocos2d::CCLog(serverRecv.c_str());
+        TSLog("%s", serverRecv.c_str());
 
         Json::Reader reader;
         Json::Value root;
@@ -68,7 +68,7 @@ static void* GF_thread_function(void *arg)
         if (bufLen == -1)
         {
             ((TSTCP*)arg)->m_hSocket = 0;
-            cocos2d::CCLog("Disconnect TCP Break Thread! %s:%d", IP.c_str(), Port);
+            //TSLog("Disconnect TCP Break Thread! %s:%d", IP.c_str(), Port);
             break;
         }
         
@@ -76,14 +76,14 @@ static void* GF_thread_function(void *arg)
             exbuffer_put(exB,(unsigned char*)cBuffer,0,bufLen);
         }
     }
-    cocos2d::CCLog("Close TCP Thread! %s:%d", IP.c_str(), Port);
+    //TSLog("Close TCP Thread! %s:%d", IP.c_str(), Port);
     exbuffer_free(&exB);
     return NULL;
 }
 
 SOCKET TSTCP::CreateClient( std::string sIP, int iPort)
 {
-    cocos2d::CCLog("Connect Server IP:%s Port:%d", sIP.c_str(), iPort);
+    TSLog("Connect Server IP:%s Port:%d", sIP.c_str(), iPort);
 
     TSSocket* tsS = TSSocket::GetSingleTon();
     m_hSocket = tsS->CreateClient(sIP, iPort);
@@ -153,7 +153,7 @@ void TSTCP::ProcessMsg()
 
 int TSTCP::SendMessageToServer( char* cBuffer, int iLen ) 
 {
-    cocos2d::CCLog("SendBuffer: BUF:%s Len:%d", cBuffer, iLen);
+    TSLog("SendBuffer: BUF:%s Len:%d", cBuffer, iLen);
     char* sendBuf = new char[iLen + 4];
     unsigned short* BufLen = (unsigned short*)sendBuf;
     *BufLen = _ntohs(iLen + 2, EXBUFFER_BIG_ENDIAN);
@@ -172,7 +172,7 @@ int TSTCP::SendMessageToServer( char* cBuffer, int iLen )
 
 int TSTCP::SendMessageToServer( std::string sBuffer )
 {
-    cocos2d::CCLog("SendBuffer: BUF:%s", sBuffer.c_str());
+    TSLog("SendBuffer: BUF:%s", sBuffer.c_str());
     int len = sBuffer.length();
     char* sendBuf = new char[len + 4];
     unsigned short* BufLen = (unsigned short*)sendBuf;

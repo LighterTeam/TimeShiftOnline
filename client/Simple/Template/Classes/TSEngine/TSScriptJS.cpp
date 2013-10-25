@@ -1,3 +1,4 @@
+#include "TSLog.h"
 #include "TSScriptJS.h"
 #include "ScriptingCore.h"
 #include "TSEvent.h"
@@ -90,11 +91,11 @@ void TSScriptJS::GetWebConfig(std::string& Adapter_Ip, int& Adapter_Port)
     JSString* pS = JS_ValueToString(sc->getGlobalContext(), AdaptServerIP);  
     JSStringWrapper pW(pS);  
 	Adapter_Ip = pW.get().c_str();
-    CCLog("AdapteServer Ip = %s", pW.get().c_str()); 
+    TSLog("AdapteServer Ip = %s", pW.get().c_str()); 
     jsval ip_port;  
     JS_GetProperty(sc->getGlobalContext(),pObj,"AdaptServerPort", &ip_port);  
     JSString* pS_port = JS_ValueToString(sc->getGlobalContext(), ip_port);  
     JSStringWrapper pWs(pS_port); 
     Adapter_Port = atoi(pWs.get().c_str());	
-    CCLog("AdapteServer Port = %s",pWs.get().c_str());
+    TSLog("AdapteServer Port = %s",pWs.get().c_str());
 }

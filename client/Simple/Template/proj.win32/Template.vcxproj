@@ -140,6 +140,7 @@
     <ClInclude Include="..\Classes\TSEngine\TSCommon.h" />
     <ClInclude Include="..\Classes\TSEngine\TSEngine.h" />
     <ClInclude Include="..\Classes\TSEngine\TSEvent.h" />
+    <ClInclude Include="..\Classes\TSEngine\TSLog.h" />
     <ClInclude Include="..\Classes\TSEngine\TSObject.h" />
     <ClInclude Include="..\Classes\TSEngine\TSScriptJS.h" />
     <ClInclude Include="..\Classes\TSEngine\TSSocket.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="..\Classes\JsonCpp\json_writer.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSEngine.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSEvent.cpp" />
+    <ClCompile Include="..\Classes\TSEngine\TSLog.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSScriptJS.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSSocket.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSTCP.cpp" />
