@@ -13,30 +13,15 @@
 
 class TSSocket : public TSObject {
 public:
-    TSSocket() : m_hSocket(0), m_ConnectState(0) {
-
+    TSSocket(){
     }
 
-    static TSSocket* getSingleTon() {
+    static TSSocket* GetSingleTon() {
         static TSSocket tsS;
         return &tsS;
     } 
 
     SOCKET CreateClient(std::string sIp, unsigned short usPort);
-
-    SOCKET getSocket() {
-        return m_hSocket;
-    }
-
-    int getConnectState() {
-        return m_ConnectState;
-    }
-
-    void CloseSocket();
-
-private:
-    SOCKET m_hSocket;
-    int m_ConnectState;
 };
 
 #endif

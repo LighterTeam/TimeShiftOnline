@@ -6,7 +6,8 @@
 #include <vector>
 #include "..\CCCommon.h"
 #include "TSEngine.h"
-#include "TSHallNum.h"
+#include "TSConnect.h"
+#include "json/json.h"
 
 #ifdef WIN32
 #include "pthread\pthread.h"
@@ -22,47 +23,27 @@ TSTCP* TSTCP::g_pTCPPtr = NULL;
 TSTCP::TSTCP()
     : m_hSocket(0)
 {
-   // TSEvent::GetSingleTon()->RegistEvent("ReConnect",(void*)this,(TpInstEventFun)&TSTCP::TSEventReConnect);
+
 }
 
+char buffer[1024*2] = {0};
 static void recvHandle(unsigned char *rbuf, size_t len)
 {
-    char buffer[1024*2] = {0};
-    memcpy(buffer, (char*)(rbuf), len);    
-
     TSTCP::GetSingleTon()->Lock();
     {
-        static int s_iLBLen = 0;
-        string sHeader = TSEngine::GetHeader((char*)buffer, len);
-        if ( sHeader == string("LB") )
+        memcpy(buffer, (char*)(rbuf), len);    
+        std::string& serverRecv = std::string("ServerRecv: ") + buffer;
+        cocos2d::CCLog(serverRecv.c_str());
+        Json::Reader reader;
+        Json::Value root;
+        if (reader.parse(buffer, root))  
         {
-			//len = 103;
-            char* begin = (char*)(rbuf + 3);
-            memcpy(LB_BUFFER + s_iLBLen, begin, len-3);
-            s_iLBLen += (len-3);
-			
-			CCLOG("LB len= %d", len);
-			CCLOG("LB = %d", s_iLBLen);
-        }
-        else if ( sHeader == string("LB_Begin") )
-        {
-			CCLOG("LB_Begin+");
-            s_iLBLen = 0;
-        }
-        else if ( sHeader == string("LB_End") )
-        {
-            if (s_iLBLen > 0)
-            {
-                //buffer取完了;
-				CCLOG("LB_End+ %d",s_iLBLen);
-                TSEvent::GetSingleTon()->PushRoot(LB_BUFFER, s_iLBLen);
-                memset(LB_BUFFER,0,sizeof(LB_BUFFER));
-            }
+            std::string sHeader = root["MM"].asString();
+            TSEvent::GetSingleTon()->PushMessge(sHeader, buffer);
         }
         else
         {
-            cocos2d::CCLog(string(buffer).c_str());
-            TSEvent::GetSingleTon()->PushMessge(sHeader, buffer);
+            cocos2d::CCLog("Message Error!");
         }
     }
     TSTCP::GetSingleTon()->UnLock();
@@ -70,7 +51,7 @@ static void recvHandle(unsigned char *rbuf, size_t len)
 
 static void* GF_thread_function(void *arg) 
 {
-    TSTCP* pTcp = (TSTCP*)arg;
+    SOCKET tcpsocket = ((TSTCP*)arg)->m_hSocket;
     char cBuffer[1024] = {0};
 
     exbuffer_t* exB;
@@ -79,24 +60,28 @@ static void* GF_thread_function(void *arg)
 
     for (;;) {
         memset(cBuffer, 0, sizeof(cBuffer));
-        int bufLen = recv(pTcp->m_hSocket, cBuffer, 1024, 0);
+        int bufLen = recv(tcpsocket, cBuffer, 1024, 0);
         if (bufLen == -1)
         {
-            return NULL;
+            ((TSTCP*)arg)->m_hSocket = 0;
+            cocos2d::CCLog("Disconnect TCP Break Thread!");
+            break;
         }
         
         if (bufLen > 0) {
             exbuffer_put(exB,(unsigned char*)cBuffer,0,bufLen);
         }
     }
-
-    exbuffer_dump(exB,exB->bufferlen);
+    cocos2d::CCLog("Close TCP Thread!");
     exbuffer_free(&exB);
+    return NULL;
 }
 
 SOCKET TSTCP::CreateClient( std::string sIP, int iPort)
 {
-    TSSocket* tsS = TSSocket::getSingleTon();
+    cocos2d::CCLog("Connect Server IP:%s Port:%d", sIP.c_str(), iPort);
+
+    TSSocket* tsS = TSSocket::GetSingleTon();
     m_hSocket = tsS->CreateClient(sIP, iPort);
 
     pthread_attr_t tAttr;
@@ -161,6 +146,7 @@ void TSTCP::ProcessMsg()
 
 int TSTCP::SendMessageToServer( char* cBuffer, int iLen ) 
 {
+    cocos2d::CCLog("SendBuffer: BUF:%s Len:%d", cBuffer, iLen);
     char* sendBuf = new char[iLen + 4];
     unsigned short* BufLen = (unsigned short*)sendBuf;
     *BufLen = _ntohs(iLen + 2, EXBUFFER_BIG_ENDIAN);
@@ -175,6 +161,7 @@ int TSTCP::SendMessageToServer( char* cBuffer, int iLen )
 
 int TSTCP::SendMessageToServer( std::string sBuffer )
 {
+    cocos2d::CCLog("SendBuffer: BUF:%s", sBuffer.c_str());
     int len = sBuffer.length();
     char* sendBuf = new char[len + 4];
     unsigned short* BufLen = (unsigned short*)sendBuf;
@@ -187,23 +174,10 @@ int TSTCP::SendMessageToServer( std::string sBuffer )
     if (err < 0)
     {
         //弹出窗口.
-        TSHallNum::getSingleTon()->OpenReConnectWnd();
+        TSConnect::getSingleTon()->OpenReConnectWnd();
     }
-
 
     delete [] sendBuf;
     return err;
 }
 
-//void TSTCP::TSEventReConnect(std::string& sBuffer){
-//
-//    std::vector<std::string> oPacket;
-//    TSEngine::TST_StringFilt(sBuffer,',',oPacket);
-//    std::vector<std::string>::iterator iter=oPacket.begin()+1;
-//    for(;iter!=oPacket.end();iter++){
-//        
-//        std::string& str=*iter;
-//        CCLOG("TSEventReConnect",str.c_str());
-//    }
-//    rec=true;
-//}

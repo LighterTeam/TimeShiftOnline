@@ -1,33 +1,33 @@
-#include "main.h"
+ï»¿#include "main.h"
 #include "AppDelegate.h"
 #include "CCEGLView.h"
-#include "json/json.h"
+//#include "json/json.h"
 
 USING_NS_CC;
 
 // uncomment below line, open debug console
 // #define USE_WIN32_CONSOLE
 
-int ParseJsonFromString()
-{
-    const char* str = "{\"uploadid\": \"UP000000\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";
-
-    Json::Reader reader;
-    Json::Value root;
-    if (reader.parse(str, root))  // reader½«Json×Ö·û´®½âÎöµ½root£¬root½«°üº¬JsonÀïËùÓĞ×ÓÔªËØ
-    {
-        std::string upload_id = root["uploadid"].asString();  // ·ÃÎÊ½Úµã£¬upload_id = "UP000000"
-        int code = root["code"].asInt();    // ·ÃÎÊ½Úµã£¬code = 100
-    }
-    return 0;
-}
+//int ParseJsonFromString()
+//{
+//    const char* str = "{\"uploadid\": \"UP0æˆ‘å‹’ä¸ªå»\",\"code\": 100,\"msg\": \"\",\"files\": \"\"}";
+//
+//    Json::Reader reader;
+//    Json::Value root;
+//    if (reader.parse(str, root))  // readerå°†Jsonå­—ç¬¦ä¸²è§£æåˆ°rootï¼Œrootå°†åŒ…å«Jsoné‡Œæ‰€æœ‰å­å…ƒç´ 
+//    {
+//        std::string upload_id = root["uploadid"].asString();  // è®¿é—®èŠ‚ç‚¹ï¼Œupload_id = "UP000000"
+//        int code = root["code"].asInt();    // è®¿é—®èŠ‚ç‚¹ï¼Œcode = 100
+//    }
+//    return 0;
+//}
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)
 {
-    ParseJsonFromString();
+    //ParseJsonFromString();
 
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
@@ -43,7 +43,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
 
-    eglView->setFrameSize(1136, 640);
+    eglView->setFrameSize(1136/2, 640/2);
 
     int ret = CCApplication::sharedApplication()->run();
 

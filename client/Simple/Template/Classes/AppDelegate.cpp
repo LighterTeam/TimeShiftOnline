@@ -11,7 +11,7 @@
 #include "cocos2d_specifics.hpp"
 #include "js_bindings_chipmunk_registration.h"
 #include "js_bindings_system_registration.h"
-#include "TSHallNum.h"
+#include "TSConnect.h"
 #include "TSMainScene.h"
 
 using namespace CocosDenshion;
@@ -47,14 +47,13 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_cocos2dx_js_extensions);
     sc->start();
 
+    // 初始化TSJS.注册Log函数 和 发包函数
     TSScriptJS::GetSingleTon()->Init();
 
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    TSHallNum::getSingleTon()->initSocket();
 
     // create a scene. it's an autorelease object
-    // CCScene *pScene = TSWelcom::scene();
     CCScene* pScene= TSMainLayout::scene();
     // run
     pDirector->runWithScene(pScene);

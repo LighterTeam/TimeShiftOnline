@@ -113,37 +113,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GateWayServerMain.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
+      <file leaf-file-name="AdaptServerMain.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="250" column="44" selection-start="7850" selection-end="7850" vertical-scroll-proportion="0.0" vertical-offset="5828" max-vertical-offset="6450">
+            <state line="199" column="0" selection-start="5873" selection-end="5873" vertical-scroll-proportion="1.5106733" vertical-offset="4055" max-vertical-offset="5150">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HallSystem.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
+      <file leaf-file-name="TCP.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="22" selection-start="5285" selection-end="5285" vertical-scroll-proportion="0.0" vertical-offset="4725" max-vertical-offset="9000">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HallServerMain.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HallServer/HallServerMain.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="6" selection-start="841" selection-end="841" vertical-scroll-proportion="0.29022083" vertical-offset="541" max-vertical-offset="1675">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Common/Config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="700">
+            <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="3025">
               <folding />
             </state>
           </provider>
@@ -168,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/HTTPServer/WebRoot/src/TSGameLayer.js" />
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/src/resource.js" />
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/cocos2d.js" />
         <option value="$PROJECT_DIR$/HTTPServer/WebRoot/TestIndex.html" />
@@ -180,10 +161,11 @@
         <option value="$PROJECT_DIR$/GateWayServer/GateWayServerMain_TCP.js" />
         <option value="$PROJECT_DIR$/GameServer/GameServerMain.js" />
         <option value="$PROJECT_DIR$/Common/Config.js" />
-        <option value="$PROJECT_DIR$/AdaptServer/AdaptServerMain.js" />
         <option value="$PROJECT_DIR$/GateWayServer/GateWayServerMain.js" />
-        <option value="$PROJECT_DIR$/HallServer/HallSystem.js" />
         <option value="$PROJECT_DIR$/HallServer/HallServerMain.js" />
+        <option value="$PROJECT_DIR$/HallServer/HallSystem.js" />
+        <option value="$PROJECT_DIR$/HallServer/StructDefine.js" />
+        <option value="$PROJECT_DIR$/AdaptServer/AdaptServerMain.js" />
       </list>
     </option>
   </component>
@@ -246,7 +228,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HallServer" />
+              <option name="myItemId" value="LighterWebEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -267,7 +249,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.HTTPServer.js">
+  <component name="RunManager" selected="Node.js.GateWayServerMain.js">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -453,7 +435,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="1" />
+    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264095" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -516,11 +498,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Clear.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="5" selection-start="89" selection-end="89" vertical-scroll-proportion="0.27047914" vertical-offset="0" max-vertical-offset="647" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/TSGameLayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="20" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="17975" />
@@ -546,11 +523,6 @@
         <state line="28" column="31" selection-start="680" selection-end="693" vertical-scroll-proportion="0.0" vertical-offset="344" max-vertical-offset="4025" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="9" selection-start="1376" selection-end="1376" vertical-scroll-proportion="0.0" vertical-offset="1294" max-vertical-offset="3025" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GateWayServerMain1.log">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="647" />
@@ -571,18 +543,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="41" selection-start="4934" selection-end="4934" vertical-scroll-proportion="6.6246057" vertical-offset="0" max-vertical-offset="5150" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common/Config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="250" column="44" selection-start="7850" selection-end="7850" vertical-scroll-proportion="0.0" vertical-offset="5828" max-vertical-offset="6450">
@@ -590,16 +550,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Common/Config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.33230293" vertical-offset="35" max-vertical-offset="700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="22" selection-start="5285" selection-end="5285" vertical-scroll-proportion="0.0" vertical-offset="4725" max-vertical-offset="9000">
+        <state line="348" column="6" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="8473" max-vertical-offset="9000">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HallServer/StructDefine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="22" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="6" selection-start="841" selection-end="841" vertical-scroll-proportion="0.29022083" vertical-offset="541" max-vertical-offset="1675">
+        <state line="60" column="2" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1033" max-vertical-offset="1675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="3025">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="0" selection-start="5873" selection-end="5873" vertical-scroll-proportion="1.5106733" vertical-offset="4055" max-vertical-offset="5150">
           <folding />
         </state>
       </provider>

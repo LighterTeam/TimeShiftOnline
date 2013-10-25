@@ -25,8 +25,25 @@ public:
 
     SOCKET CreateClient(std::string sIP, int iPort);
 
+    int GetConnectState() {
+        if (m_hSocket == 0) {
+            return 0;
+        }
+        return 1;
+    }
+
     SOCKET getSocket() {
         return m_hSocket;
+    }
+
+    void CloseSocket()
+    {   
+#ifdef WIN32
+        ::closesocket(m_hSocket);
+#else
+        ::close(m_hSocket);
+#endif
+        m_hSocket = 0;
     }
 
     void Lock();
@@ -37,7 +54,6 @@ public:
     int SendMessageToServer( char* cBuffer, int iLen );
 
     void threadFunction(std::string& sBuffer);
-   // void TSEventReConnect(std::string& sBuffer);
 
 public:
     static TSTCP* g_pTCPPtr;
@@ -46,8 +62,7 @@ public:
     SOCKET m_hSocket;
     pthread_t m_idThread;
     pthread_mutex_t m_mMutex;
-  //  bool rec;
 };
 
-#endif
+#endif 
 

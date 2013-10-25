@@ -4,7 +4,7 @@
 #include "jsapi.h"
 #include <stdarg.h>
 #include "TSEngine.h"
-#include "../TSHallNum.h"
+#include "../TSConnect.h"
 
 TSScriptJS::TSScriptJS()
 {
@@ -81,7 +81,7 @@ JSBool TSScriptJS::TS_SendBuffer( JSContext *cx, uint32_t argc, jsval *vp )
 void TSScriptJS::GetWebConfig() 
 {
     ScriptingCore* sc = ScriptingCore::getInstance();
-    sc->runScript("CMAI/Config.js");
+    sc->runScript("Config/Config.js");
     JSObject* pObj;    	
 	jsval obj;
     JS_GetProperty(sc->getGlobalContext(),sc->getGlobalObject(),"IP", &obj); 
@@ -90,13 +90,13 @@ void TSScriptJS::GetWebConfig()
     JS_GetProperty(sc->getGlobalContext(),pObj,"AdaptServerIP", &AdaptServerIP);  
     JSString* pS = JS_ValueToString(sc->getGlobalContext(), AdaptServerIP);  
     JSStringWrapper pW(pS);  
-	TSHallNum::getSingleTon()->m_Adapter_Ip=pW.get().c_str();
-    CCLog("================ip=%s",pW.get().c_str()); 
+	TSConnect::getSingleTon()->m_Adapter_Ip = pW.get().c_str();
+    CCLog("AdapteServer Ip = %s", pW.get().c_str()); 
     jsval ip_port;  
-    JS_GetProperty(sc->getGlobalContext(),pObj,"AdaptServerPort_WS", &ip_port);  
+    JS_GetProperty(sc->getGlobalContext(),pObj,"AdaptServerPort", &ip_port);  
     JSString* pS_port = JS_ValueToString(sc->getGlobalContext(), ip_port);  
     JSStringWrapper pWs(pS_port); 
-    TSHallNum::getSingleTon()->m_Adapter_Port=pWs.get().c_str();	
-    CCLog("================ip_port=%s",pWs.get().c_str());
+    TSConnect::getSingleTon()->m_Adapter_Port = atoi(pWs.get().c_str());	
+    CCLog("AdapteServer Port = %s",pWs.get().c_str());
     
 }

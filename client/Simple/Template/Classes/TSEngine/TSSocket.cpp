@@ -17,6 +17,7 @@
 using namespace std;
 
 SOCKET TSSocket::CreateClient(string sIp, unsigned short usPort) {
+
     #ifdef WIN32
     WORD wVersionRequested;
     WSAData wasdata;
@@ -35,7 +36,7 @@ SOCKET TSSocket::CreateClient(string sIp, unsigned short usPort) {
     }
 
     //创建套接字
-    m_hSocket = socket(AF_INET,SOCK_STREAM,0);
+    SOCKET hSocket = socket(AF_INET,SOCK_STREAM,0);
     SOCKADDR_IN addrSrv;
 
     //设置套接字的相关参数;
@@ -44,7 +45,7 @@ SOCKET TSSocket::CreateClient(string sIp, unsigned short usPort) {
     addrSrv.sin_addr.S_un.S_addr=inet_addr(sIp.c_str());
 
     //连接TCP
-    m_ConnectState = connect(m_hSocket,(SOCKADDR*)&addrSrv,sizeof(SOCKADDR));
+    int connectState = connect(hSocket,(SOCKADDR*)&addrSrv,sizeof(SOCKADDR));
 	#else
 	 //定义网络地址结构体
      struct sockaddr_in addrSrv;
@@ -55,9 +56,9 @@ SOCKET TSSocket::CreateClient(string sIp, unsigned short usPort) {
      addrSrv.sin_port = htons(usPort);
      addrSrv.sin_addr.s_addr = inet_addr(sIp.c_str());
      //创建一个socket
-     m_hSocket = socket(AF_INET, SOCK_STREAM, 0);
+     hSocket = socket(AF_INET, SOCK_STREAM, 0);
     //socket创建失败
-    if (m_hSocket < 0)
+    if (hSocket < 0)
     {
       //CCLog("%s", "socket failed!!!");
     }
@@ -66,29 +67,21 @@ SOCKET TSSocket::CreateClient(string sIp, unsigned short usPort) {
       //CCLog("%s", "socket success!!!");
     }
     //创建一个socket链接
-    m_ConnectState = connect(m_hSocket, (struct sockaddr *) &addrSrv, sizeof(addrSrv));
+    connectState = connect(hSocket, (struct sockaddr *) &addrSrv, sizeof(addrSrv));
 	#endif
-    if (m_ConnectState < 0)
+    if (connectState < 0)
     {   
         #ifdef WIN32
-		closesocket(m_hSocket);
+		closesocket(hSocket);
 		#else
-		close(m_hSocket);
+		close(hSocket);
 		#endif
     }
 
-    return m_hSocket;
+    return hSocket;
 }
 
-void TSSocket::CloseSocket()
-{   
-    #ifdef WIN32
-    ::closesocket(m_hSocket);
-	#else
-	::close(m_hSocket);
-	#endif
-    m_hSocket = 0;
-}
+
 
 
 

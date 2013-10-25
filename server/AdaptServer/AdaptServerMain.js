@@ -146,14 +146,14 @@ tcp.CreateServer(cfg.AdaptServerPort_TCP,
     function (hSocket) {
         G_ClientNumberTCP_Count --;
         TSLog.trace("TCP客户端下线 登陆人数:" + G_ClientNumberTCP_Count + " 总人数:" +
-            (G_ClientNumberTCP_Count + G_ClientNumberTCP_Count));
+            (G_ClientNumberTCP_Count + G_ClientNumberWS_Count));
     },
 
     function (hSocket) {
         G_ClientNumberTCP ++;
         G_ClientNumberTCP_Count++;
         TSLog.trace("TCP客户端上线 登陆人数:" + G_ClientNumberTCP_Count + " 总人数:" +
-            (G_ClientNumberTCP_Count + G_ClientNumberTCP_Count));
+            (G_ClientNumberTCP_Count + G_ClientNumberWS_Count));
     }
 )
 

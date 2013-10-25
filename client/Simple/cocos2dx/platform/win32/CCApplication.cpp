@@ -66,7 +66,7 @@ int CCApplication::run()
                 nLast.QuadPart = nNow.QuadPart;
                 CCDirector::sharedDirector()->mainLoop();
             #ifdef WIN32
-                Sleep(10);
+                Sleep(1);
             #endif
             }
             else

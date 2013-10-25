@@ -1,5 +1,5 @@
 #include "TSMainScene.h"
-#include "TSHallNum.h"
+#include "TSConnect.h"
 #include "cocos-ext.h"
 //#include "Register.h"
 
@@ -60,9 +60,7 @@ bool TSMainLayout::init()
 
         setTouchEnabled(true);
 
-        TSHallNum::getSingleTon();
-        TSSocket::getSingleTon()->getConnectState();
-
+        TSConnect::getSingleTon();
         bRet = true;
     } while (0);
 
@@ -70,8 +68,9 @@ bool TSMainLayout::init()
 }
 
 void TSMainLayout::onEnter(){
+    TSConnect::getSingleTon()->initSocket(); // 初始化服务器连接
+
     CCLayer::onEnter();
-    TSHallNum::getSingleTon()->m_isRobot = 0;
 }
 
 void TSMainLayout::onExit(){
@@ -187,8 +186,11 @@ void TSMainLayout::TsEventGuestLogin(std::string sBuffer)
 // 连接适配服分配的网关;
 void TSMainLayout::TSEventConnectGateWay( std::string sBuffer )
 {
+    CCLog(sBuffer.c_str());
+    TSTCP::GetSingleTon()->CloseSocket();
 }
 
 void TSMainLayout::TseventRoomOpen(std::string sBuffer)
 {
+
 }

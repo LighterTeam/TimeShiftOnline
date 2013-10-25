@@ -86,11 +86,11 @@
     <ClInclude Include="..\Classes\TSMainScene.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\TSHallNum.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\JsonCpp\json_batchallocator.h">
       <Filter>JsonCpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TSConnect.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -118,9 +118,6 @@
     <ClCompile Include="..\Classes\TSMainScene.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\TSHallNum.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\JsonCpp\json_reader.cpp">
       <Filter>JsonCpp</Filter>
     </ClCompile>
@@ -129,6 +126,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\JsonCpp\json_writer.cpp">
       <Filter>JsonCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TSConnect.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

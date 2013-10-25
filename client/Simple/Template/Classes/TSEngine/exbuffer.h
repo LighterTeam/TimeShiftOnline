@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -243,7 +243,7 @@ extern "C"
                         rlen++;
                     }
                     value->readOffset = 0;
-                    for(i = 0;i<(value->headLen - rlen);i++)
+                    for(i = 0;i<(size_t)(value->headLen - rlen);i++)
                     {
                         value->headBytes[rlen+i] = value->buffer[value->readOffset+i];
                     }

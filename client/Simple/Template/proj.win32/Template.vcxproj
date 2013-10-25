@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>MOZ_TRACE_JSCALLS;USE_WIN32_CONSOLE;XP_WIN;WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS_DEBUG;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4407;4800;4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,7 +144,7 @@
     <ClInclude Include="..\Classes\TSEngine\TSScriptJS.h" />
     <ClInclude Include="..\Classes\TSEngine\TSSocket.h" />
     <ClInclude Include="..\Classes\TSEngine\TSTCP.h" />
-    <ClInclude Include="..\Classes\TSHallNum.h" />
+    <ClInclude Include="..\Classes\TSConnect.h" />
     <ClInclude Include="..\Classes\TSMainScene.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
@@ -159,7 +159,7 @@
     <ClCompile Include="..\Classes\TSEngine\TSScriptJS.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSSocket.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSTCP.cpp" />
-    <ClCompile Include="..\Classes\TSHallNum.cpp" />
+    <ClCompile Include="..\Classes\TSConnect.cpp" />
     <ClCompile Include="..\Classes\TSMainScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
