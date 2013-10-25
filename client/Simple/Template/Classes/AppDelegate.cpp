@@ -34,8 +34,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 	CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
 
-	CCSize designSize = CCSizeMake(1136, 640);
+	CCSize designSize = CCSizeMake(640, 1136); //iphone5s 5c
 	CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);
+
     // turn on display FPS
     pDirector->setDisplayStats(true);
 
