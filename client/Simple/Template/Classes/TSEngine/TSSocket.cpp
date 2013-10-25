@@ -76,6 +76,7 @@ SOCKET TSSocket::CreateClient(string sIp, unsigned short usPort) {
 		#else
 		close(hSocket);
 		#endif
+        return 0;
     }
 
     return hSocket;

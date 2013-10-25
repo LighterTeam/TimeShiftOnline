@@ -27,7 +27,7 @@ public:
 public:
     bool RunFunction(std::string funName, std::string arg);
     jsval JSCallFuncName(const char *name, int count, ...);
-	void GetWebConfig();
+    void GetWebConfig(std::string& Adapter_Ip, int& Adapter_Port);
 };
 
 

@@ -3,6 +3,7 @@
 #include "TSEngine/TSEvent.h"
 #include "TSEngine/TSSocket.h"
 #include "TSEngine/TSScriptJS.h"
+#include "json/json.h"
 
 TSConnect::TSConnect() {
 
@@ -19,35 +20,22 @@ bool TSConnect::ReConnect()
     int err = TSTCP::GetSingleTon()->GetConnectState();
     if (err >= 0)
     {
-        TSTCP::GetSingleTon()->SendMessageToServer(std::string("ReConnect,") + m_sUUID);   
+        Json::Value jValue;
+        jValue["MM"] = "ReConnect";
+        jValue["UUID"] = m_sUUID; 
+        TSTCP::GetSingleTon()->SendMessageToServer(jValue.toStyledString());   
     }
     return true;
 }
 
-void TSConnect::ReConnectSuccess_CallBack(string sBuffer)
-{
-    //关闭窗口完成重连;
-}
-
-void TSConnect::OpenReConnectWnd()
-{
-    //OpenReConnectWnd_CallBack 按钮注册 //点击重连按钮之后.发送. ReConnect + UUID 到服务器.之后...
-}
-
-void TSConnect::OpenReConnectWnd_CallBack()
-{
-    ReConnect();
-}
-
 void TSConnect::initSocket()
 {
-    TSScriptJS::GetSingleTon()->GetWebConfig();
-    std::string& adapter_ip = TSConnect::getSingleTon()->m_Adapter_Ip;
-    int  adapter_port = TSConnect::getSingleTon()->m_Adapter_Port;
-    TSTCP::GetSingleTon()->CreateClient(adapter_ip, adapter_port);
-    int m_iConnectState = TSTCP::GetSingleTon()->GetConnectState();
-    if (m_iConnectState >= 0)
+    TSConnect* pC = TSConnect::getSingleTon();
+    TSScriptJS::GetSingleTon()->GetWebConfig(pC->m_Adapter_Ip, pC->m_Adapter_Port);
+    if (TSTCP::GetSingleTon()->CreateClient(pC->m_Adapter_Ip, pC->m_Adapter_Port) != 0)
     {
         TSTCP::GetSingleTon()->SendMessageToServer("{\"MM\":\"ConnectGateWay\"}"); 
+    } else {
+        TSEvent::GetSingleTon()->SendMsg("Disconnect","Disconnect");
     }
 }

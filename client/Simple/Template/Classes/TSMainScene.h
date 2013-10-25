@@ -1,16 +1,14 @@
-#ifndef __TSMainLayout_H__
+ï»¿#ifndef __TSMainLayout_H__
 #define __TSMainLayout_H__
 
 #include "cocos2d.h"
-#include "cocos-ext.h"
-#include "SimpleAudioEngine.h"
 #include "TSEngine/TSObject.h"
+#include "json/json.h"
 
 using namespace cocos2d;
 using namespace std;
-USING_NS_CC_EXT;
 
-class TSMainLayout : public TSObject, public cocos2d::CCLayer, public cocos2d::extension::CCEditBoxDelegate
+class TSMainLayout : public TSObject, public cocos2d::CCLayer
 {
 public:
     TSMainLayout();
@@ -23,40 +21,14 @@ public:
 
     // there's no 'id' in cpp, so we recommand to return the exactly class pointer
     static cocos2d::CCScene* scene();
-    
-    // a selector callback
-    void menuCallback(CCObject* pSender);
-
-    // ³¡¾°;
-	void initView(CCSprite* sp);
-
-	// Ìí¼Ó¶Ô»°¿ò;
-	void add_diaog(CCSprite* sp);
-
     void draw();
-
-	virtual void editBoxEditingDidBegin(cocos2d::extension::CCEditBox* editBox);
-	virtual void editBoxEditingDidEnd(cocos2d::extension::CCEditBox* editBox);
-	virtual void editBoxTextChanged(cocos2d::extension::CCEditBox* editBox, const std::string& text);
-	virtual void editBoxReturn(cocos2d::extension::CCEditBox* editBox);
-	//½âÎö×Ö·û´®;
-	int strJqH(string str,int len);
 
     // implement the "static node()" method manually
     CREATE_FUNC(TSMainLayout);
 
-    void TSEventLogin(std::string sBuffer);
-    void TSEventVerify(std::string sBuffer);
-    void TsEventRegisterUser(std::string sBuffer);
-    void TsEventGuestLogin(std::string sBuffer);
-    void TseventRoomOpen(std::string sBuffer);
-    void TSEventConnectGateWay(std::string sBuffer);
-
-    void TSEventMusic(char* cBuffer, int iLen);
-    void FillUserInfo(std::vector<std::string>& oPacket);
-
-
-    virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+    // Message
+    void TSEventConnectGateWay(Json::Value jValue);
+    void TSEventDisconnect(std::string sBuffer);
 public:
     CCSprite* m_rb;
 };

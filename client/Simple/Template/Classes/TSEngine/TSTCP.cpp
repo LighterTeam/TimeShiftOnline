@@ -6,7 +6,6 @@
 #include <vector>
 #include "..\CCCommon.h"
 #include "TSEngine.h"
-#include "TSConnect.h"
 #include "json/json.h"
 
 #ifdef WIN32
@@ -34,16 +33,18 @@ static void recvHandle(unsigned char *rbuf, size_t len)
         memcpy(buffer, (char*)(rbuf), len);    
         std::string& serverRecv = std::string("ServerRecv: ") + buffer;
         cocos2d::CCLog(serverRecv.c_str());
+
         Json::Reader reader;
         Json::Value root;
         if (reader.parse(buffer, root))  
         {
             std::string sHeader = root["MM"].asString();
-            TSEvent::GetSingleTon()->PushMessge(sHeader, buffer);
+            TSEvent::GetSingleTon()->JSON_PushMessge(sHeader, root);
         }
         else
         {
-            cocos2d::CCLog("Message Error!");
+            std::string& sHeader = TSEngine::GetHeader(buffer, len);
+            TSEvent::GetSingleTon()->PushMessge(sHeader, buffer);
         }
     }
     TSTCP::GetSingleTon()->UnLock();
@@ -83,6 +84,10 @@ SOCKET TSTCP::CreateClient( std::string sIP, int iPort)
 
     TSSocket* tsS = TSSocket::GetSingleTon();
     m_hSocket = tsS->CreateClient(sIP, iPort);
+    if (m_hSocket == 0)
+    {
+        return 0;
+    }
 
     pthread_attr_t tAttr;
     int errCode = pthread_attr_init(&tAttr);
@@ -132,15 +137,12 @@ void TSTCP::ProcessMsg()
         pE->SendMsg(pE->m_MsgList.begin()->first, pE->m_MsgList.begin()->second);
         pE->m_MsgList.pop_front();
     }
-
-    if (pE->m_MsgListRoot.size() > 0)
+    if (pE->m_MsgJsonList.size() > 0)
     {
-		CCLOG("SendMM");
-        char* pSrc = pE->m_MsgListRoot.begin()->first;
-        pE->SendRoot(pSrc, pE->m_MsgListRoot.begin()->second);
-        delete pSrc;
-        pE->m_MsgListRoot.pop_front();
+        pE->JSON_SendMsg(pE->m_MsgJsonList.begin()->first, pE->m_MsgJsonList.begin()->second);
+        pE->m_MsgJsonList.pop_front();
     }
+
     UnLock();
 }
 
@@ -154,6 +156,10 @@ int TSTCP::SendMessageToServer( char* cBuffer, int iLen )
     *BufLen = _ntohs(iLen, EXBUFFER_BIG_ENDIAN);
     memcpy(sendBuf + 4, cBuffer, iLen);
     int err = send(m_hSocket, sendBuf, iLen + 4, 0);
+    if (err < 0)
+    {
+        TSEvent::GetSingleTon()->PushMessge("Disconnect","Disconnect");
+    }
 
     delete [] sendBuf;
     return err;
@@ -170,11 +176,9 @@ int TSTCP::SendMessageToServer( std::string sBuffer )
     *BufLen = _ntohs(len, EXBUFFER_BIG_ENDIAN);
     memcpy(sendBuf+4, sBuffer.c_str(), len);
     int err = send(m_hSocket, sendBuf, len+4, 0);
-
     if (err < 0)
     {
-        //µ¯³ö´°¿Ú.
-        TSConnect::getSingleTon()->OpenReConnectWnd();
+        TSEvent::GetSingleTon()->PushMessge("Disconnect","Disconnect");
     }
 
     delete [] sendBuf;

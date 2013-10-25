@@ -1,5 +1,5 @@
-#ifndef  __TSHallNum_H__
-#define  __TSHallNum_H__
+#ifndef  __TSConnect_H__
+#define  __TSConnect_H__
 
 #include "cocos2d.h"
 #include <string>
@@ -18,9 +18,6 @@ public:
     }
 
     bool ReConnect();
-    void ReConnectSuccess_CallBack(string sBuffer);
-    void OpenReConnectWnd();
-    void OpenReConnectWnd_CallBack();
     void initSocket();
 
 public:

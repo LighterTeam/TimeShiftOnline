@@ -29,7 +29,7 @@ void TSEvent::SendMsg( string sEventKey, string sBuffer )
         }
     }
     else {
-        cocos2d::CCLog("消息系统中没有消息码:%s", sEventKey.c_str());
+        cocos2d::CCLog("String消息系统中没有消息码:%s", sEventKey.c_str());
     }
 }
 
@@ -38,30 +38,40 @@ void TSEvent::PushMessge( string sEventKey, string sBuffer )
     m_MsgList.push_back(std::make_pair(sEventKey, sBuffer));
 }
 
-void TSEvent::RegistEventRoot( void* pInst, TpInstEventFunRoot pFun )
+void TSEvent::JSON_RegistEvent( string sEventKey, void* pInst, TpInstEventJsonFun pFun )
 {
-    m_RootEvent = pInst;
-    m_pFunRootEvent = pFun;
+    m_MapJsonEvent[sEventKey][pInst] = pFun;
 }
 
-void TSEvent::UnRegistEventRoot()
+void TSEvent::JSON_UnRegistEvent( string sEventKey, void* pInst )
 {
-    m_RootEvent = 0;
-    m_pFunRootEvent = 0;
+    m_MapJsonEvent[sEventKey].erase(pInst);
 }
 
-void TSEvent::SendRoot(char* pBuffer, int iLen)
+void TSEvent::JSON_UnRegistEvent( string sEventKey )
 {
-    if (m_RootEvent == 0 || m_pFunRootEvent == 0)
-    {
-        return;
+    m_MapJsonEvent.erase(sEventKey);
+}
+
+void TSEvent::JSON_SendMsg( string sEventKey, Json::Value jValue )
+{
+    if (m_MapJsonEvent.count(sEventKey)) {
+        map<void*, TpInstEventJsonFun>& pInstMap = m_MapJsonEvent[sEventKey];
+
+        map<void*, TpInstEventJsonFun>::iterator iter = pInstMap.begin();
+        for (; iter != pInstMap.end(); iter++) {
+            TSObject* pInst = (TSObject*)iter->first;
+            TpInstEventJsonFun pFun = iter->second;
+            (pInst->*pFun)(jValue);
+        }
     }
-    ((TSObject*)m_RootEvent->*m_pFunRootEvent)(pBuffer, iLen);
+    else {
+        cocos2d::CCLog("Json消息系统中没有消息码:%s", sEventKey.c_str());
+    }
 }
 
-void TSEvent::PushRoot( char* pBuffer, int iLen )
+void TSEvent::JSON_PushMessge( string sEventKey, Json::Value jValue )
 {
-    char* cBuffer = new char[iLen];
-    memcpy(cBuffer,pBuffer,iLen);
-    m_MsgListRoot.push_back(std::make_pair(cBuffer, iLen));
+    m_MsgJsonList.push_back(std::make_pair(sEventKey,jValue));
 }
+
