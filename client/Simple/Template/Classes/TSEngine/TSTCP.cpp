@@ -53,6 +53,9 @@ static void recvHandle(unsigned char *rbuf, size_t len)
 static void* GF_thread_function(void *arg) 
 {
     SOCKET tcpsocket = ((TSTCP*)arg)->m_hSocket;
+    std::string IP = ((TSTCP*)arg)->m_sIP;
+    int Port = ((TSTCP*)arg)->m_iPort;
+
     char cBuffer[1024] = {0};
 
     exbuffer_t* exB;
@@ -65,7 +68,7 @@ static void* GF_thread_function(void *arg)
         if (bufLen == -1)
         {
             ((TSTCP*)arg)->m_hSocket = 0;
-            cocos2d::CCLog("Disconnect TCP Break Thread!");
+            cocos2d::CCLog("Disconnect TCP Break Thread! %s:%d", IP.c_str(), Port);
             break;
         }
         
@@ -73,7 +76,7 @@ static void* GF_thread_function(void *arg)
             exbuffer_put(exB,(unsigned char*)cBuffer,0,bufLen);
         }
     }
-    cocos2d::CCLog("Close TCP Thread!");
+    cocos2d::CCLog("Close TCP Thread! %s:%d", IP.c_str(), Port);
     exbuffer_free(&exB);
     return NULL;
 }
@@ -88,6 +91,9 @@ SOCKET TSTCP::CreateClient( std::string sIP, int iPort)
     {
         return 0;
     }
+
+    m_sIP = sIP;
+    m_iPort = iPort;
 
     pthread_attr_t tAttr;
     int errCode = pthread_attr_init(&tAttr);
@@ -142,7 +148,6 @@ void TSTCP::ProcessMsg()
         pE->JSON_SendMsg(pE->m_MsgJsonList.begin()->first, pE->m_MsgJsonList.begin()->second);
         pE->m_MsgJsonList.pop_front();
     }
-
     UnLock();
 }
 

@@ -1,4 +1,4 @@
-#include "TSEngine/TSTCP.h"
+﻿#include "TSEngine/TSTCP.h"
 #include "TSEngine/TSEvent.h"
 #include "TSMainScene.h"
 #include "TSConnect.h"
@@ -66,20 +66,37 @@ void TSMainLayout::draw()
 
 TSMainLayout::TSMainLayout()
 {
-    TSEvent::GetSingleTon()->JSON_RegistEvent("ConnectGateWay", (void*)this, (TpInstEventJsonFun)&TSMainLayout::TSEventConnectGateWay);
-    TSEvent::GetSingleTon()->RegistEvent("Disconnect", (void*)this, (TpInstEventFun)&TSMainLayout::TSEventDisconnect);
+    TSEvent* pE = TSEvent::GetSingleTon();
+    pE->JSON_RegistEvent("ConnectGateWay", (void*)this, (TpInstEventJsonFun)&TSMainLayout::TSEventConnectGateWay);
+    pE->RegistEvent("Disconnect", (void*)this, (TpInstEventFun)&TSMainLayout::TSEventDisconnect);
 }
 
 TSMainLayout::~TSMainLayout()
 {
-    TSEvent::GetSingleTon()->JSON_UnRegistEvent("ConnectGateWay", (void*)this);
+    TSEvent* pE = TSEvent::GetSingleTon();
+    pE->JSON_UnRegistEvent("ConnectGateWay", (void*)this);
+    pE->UnRegistEvent("Disconnect", (void*)this);
 }
 
 // 连接适配服分配的网关;
 void TSMainLayout::TSEventConnectGateWay( Json::Value jValue)
 {
+    //{
+    //    "IP" : "127.0.0.1",
+    //    "MM" : "ConnectGateWay",
+    //    "Port" : 30000
+    //}
+
+    TSTCP* pT = TSTCP::GetSingleTon();
     CCLog("TSEventConnectGateWay: %s", jValue.toStyledString().c_str());
-    TSTCP::GetSingleTon()->CloseSocket();
+    TSTCP::GetSingleTon()->CloseSocket(); // 断开网关
+    
+    // 连接网关服
+    if (pT->CreateClient(jValue["IP"].asString(),jValue["Port"].asInt()) == 0) {
+        CCLog("GateWayConnect Failed!");
+    } else {
+        CCLog("GateWayConnect Success!");
+    }
 }
 
 void TSMainLayout::TSEventDisconnect( std::string sBuffer )

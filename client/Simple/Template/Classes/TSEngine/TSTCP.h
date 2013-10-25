@@ -62,6 +62,8 @@ public:
     SOCKET m_hSocket;
     pthread_t m_idThread;
     pthread_mutex_t m_mMutex;
+    std::string m_sIP;
+    int m_iPort;
 };
 
 #endif 

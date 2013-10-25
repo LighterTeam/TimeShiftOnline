@@ -29,7 +29,7 @@ void TSEvent::SendMsg( string sEventKey, string sBuffer )
         }
     }
     else {
-        cocos2d::CCLog("String消息系统中没有消息码:%s", sEventKey.c_str());
+        cocos2d::CCLog("String NotFound is message regist:%s", sEventKey.c_str());
     }
 }
 
@@ -66,7 +66,7 @@ void TSEvent::JSON_SendMsg( string sEventKey, Json::Value jValue )
         }
     }
     else {
-        cocos2d::CCLog("Json消息系统中没有消息码:%s", sEventKey.c_str());
+        cocos2d::CCLog("Json NotFound is message regist:%s", sEventKey.c_str());
     }
 }
 
