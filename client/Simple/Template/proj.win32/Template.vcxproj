@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)scripting\javascript\spidermonkey-win32\include;$(SolutionDir)external\chipmunk\include\chipmunk;$(SolutionDir)scripting\javascript\bindings;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)external\JsonCpp;$(SolutionDir)scripting\javascript\spidermonkey-win32\include;$(SolutionDir)external\chipmunk\include\chipmunk;$(SolutionDir)scripting\javascript\bindings;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)extensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -124,6 +124,10 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\Classes\JsonCpp\json_internalarray.inl" />
+    <None Include="..\Classes\JsonCpp\json_internalmap.inl" />
+    <None Include="..\Classes\JsonCpp\json_valueiterator.inl" />
+    <None Include="..\Classes\JsonCpp\sconscript" />
     <None Include="..\Resources\CloseNormal.png" />
     <None Include="..\Resources\CloseSelected.png" />
     <None Include="..\Resources\HelloWorld.png" />
@@ -131,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\JsonCpp\json_batchallocator.h" />
     <ClInclude Include="..\Classes\TSEngine\exbuffer.h" />
     <ClInclude Include="..\Classes\TSEngine\TSCommon.h" />
     <ClInclude Include="..\Classes\TSEngine\TSEngine.h" />
@@ -146,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\JsonCpp\json_reader.cpp" />
+    <ClCompile Include="..\Classes\JsonCpp\json_value.cpp" />
+    <ClCompile Include="..\Classes\JsonCpp\json_writer.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSEngine.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSEvent.cpp" />
     <ClCompile Include="..\Classes\TSEngine\TSScriptJS.cpp" />

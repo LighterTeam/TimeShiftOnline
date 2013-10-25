@@ -19,6 +19,9 @@
     <Filter Include="Game">
       <UniqueIdentifier>{1f2c20ef-52eb-4a8c-9282-5698f19f0685}</UniqueIdentifier>
     </Filter>
+    <Filter Include="JsonCpp">
+      <UniqueIdentifier>{04ed1da0-8f29-4e77-8544-3a264aa17c56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CatchMike.ico">
@@ -32,6 +35,18 @@
     </None>
     <None Include="..\Resources\HelloWorld.png">
       <Filter>resource</Filter>
+    </None>
+    <None Include="..\Classes\JsonCpp\json_internalarray.inl">
+      <Filter>JsonCpp</Filter>
+    </None>
+    <None Include="..\Classes\JsonCpp\json_internalmap.inl">
+      <Filter>JsonCpp</Filter>
+    </None>
+    <None Include="..\Classes\JsonCpp\json_valueiterator.inl">
+      <Filter>JsonCpp</Filter>
+    </None>
+    <None Include="..\Classes\JsonCpp\sconscript">
+      <Filter>JsonCpp</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +89,9 @@
     <ClInclude Include="..\Classes\TSHallNum.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\JsonCpp\json_batchallocator.h">
+      <Filter>JsonCpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -102,6 +120,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\TSHallNum.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JsonCpp\json_reader.cpp">
+      <Filter>JsonCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JsonCpp\json_value.cpp">
+      <Filter>JsonCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JsonCpp\json_writer.cpp">
+      <Filter>JsonCpp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
