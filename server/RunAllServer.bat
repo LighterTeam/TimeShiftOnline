@@ -11,4 +11,3 @@ start 4_GameServer.bat
 ping -n 3 127.0.0.1
 
 start 5_HttpServer.bat
-pause
