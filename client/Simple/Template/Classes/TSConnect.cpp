@@ -5,7 +5,7 @@
 #include "TSEngine/TSScriptJS.h"
 #include "json/json.h"
 
-TSConnect::TSConnect() {
+TSConnect::TSConnect() : m_iUUID(0) {
 
 }
 
@@ -22,7 +22,7 @@ bool TSConnect::ReConnect()
     {
         Json::Value jValue;
         jValue["MM"] = "ReConnect";
-        jValue["UUID"] = m_sUUID; 
+        jValue["UUID"] = m_iUUID; 
         TSTCP::GetSingleTon()->SendMessageToServer(jValue.toStyledString());   
     }
     return true;
@@ -30,7 +30,7 @@ bool TSConnect::ReConnect()
 
 void TSConnect::initSocket()
 {
-    TSConnect* pC = TSConnect::getSingleTon();
+    TSConnect* pC = TSConnect::GetSingleTon();
     TSScriptJS::GetSingleTon()->GetWebConfig(pC->m_Adapter_Ip, pC->m_Adapter_Port);
     if (TSTCP::GetSingleTon()->CreateClient(pC->m_Adapter_Ip, pC->m_Adapter_Port) != 0)
     {

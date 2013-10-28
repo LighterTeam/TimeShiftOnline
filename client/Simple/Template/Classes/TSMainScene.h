@@ -28,6 +28,7 @@ public:
 
     // Message
     void TSEventConnectGateWay(Json::Value jValue);
+    void TSEventRegistUUID(Json::Value jValue);
     void TSEventDisconnect(std::string sBuffer);
 public:
     CCSprite* m_rb;

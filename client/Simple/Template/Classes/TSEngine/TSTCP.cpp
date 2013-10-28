@@ -7,6 +7,7 @@
 #include "..\CCCommon.h"
 #include "TSEngine.h"
 #include "json/json.h"
+#include <sstream>
 
 #ifdef WIN32
 #include "pthread\pthread.h"
@@ -25,11 +26,12 @@ TSTCP::TSTCP()
 
 }
 
-char buffer[1024*2] = {0};
+char buffer[1024*16] = {0};
 static void recvHandle(unsigned char *rbuf, size_t len)
 {
     TSTCP::GetSingleTon()->Lock();
     {
+        memset(buffer,0,sizeof(buffer));
         memcpy(buffer, (char*)(rbuf), len);    
         std::string& serverRecv = std::string("ServerRecv: ") + buffer;
         TSLog("%s", serverRecv.c_str());
@@ -52,9 +54,10 @@ static void recvHandle(unsigned char *rbuf, size_t len)
 
 static void* GF_thread_function(void *arg) 
 {
-    SOCKET tcpsocket = ((TSTCP*)arg)->m_hSocket;
-    std::string IP = ((TSTCP*)arg)->m_sIP;
-    int Port = ((TSTCP*)arg)->m_iPort;
+    TSTCP* pTCP = ((TSTCP*)arg);
+    SOCKET tcpsocket = pTCP->m_hSocket;
+    std::string IP = pTCP->m_sIP;
+    int Port = pTCP->m_iPort;
 
     char cBuffer[1024] = {0};
 
@@ -67,8 +70,7 @@ static void* GF_thread_function(void *arg)
         int bufLen = recv(tcpsocket, cBuffer, 1024, 0);
         if (bufLen == -1)
         {
-            ((TSTCP*)arg)->m_hSocket = 0;
-            //TSLog("Disconnect TCP Break Thread! %s:%d", IP.c_str(), Port);
+            pTCP->m_hSocket = 0;
             break;
         }
         
@@ -76,7 +78,11 @@ static void* GF_thread_function(void *arg)
             exbuffer_put(exB,(unsigned char*)cBuffer,0,bufLen);
         }
     }
-    //TSLog("Close TCP Thread! %s:%d", IP.c_str(), Port);
+
+    std::stringstream disstr;
+    disstr << "Disconnect IP:" << IP.c_str() << " Port:" << Port;
+    TSEvent::GetSingleTon()->PushMessge("Disconnect", disstr.str());
+    
     exbuffer_free(&exB);
     return NULL;
 }
@@ -84,7 +90,6 @@ static void* GF_thread_function(void *arg)
 SOCKET TSTCP::CreateClient( std::string sIP, int iPort)
 {
     TSLog("Connect Server IP:%s Port:%d", sIP.c_str(), iPort);
-
     TSSocket* tsS = TSSocket::GetSingleTon();
     m_hSocket = tsS->CreateClient(sIP, iPort);
     if (m_hSocket == 0)

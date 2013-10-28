@@ -44,7 +44,7 @@ bool TSMainLayout::init()
 
         setTouchEnabled(true);
 
-        TSConnect::getSingleTon();
+        TSConnect::GetSingleTon();
         bRet = true;
     } while (0);
 
@@ -52,7 +52,7 @@ bool TSMainLayout::init()
 }
 
 void TSMainLayout::onEnter(){
-    TSConnect::getSingleTon()->initSocket(); // 初始化服务器连接
+    TSConnect::GetSingleTon()->initSocket(); // 初始化服务器连接
 
     CCLayer::onEnter();
 }
@@ -70,14 +70,16 @@ TSMainLayout::TSMainLayout()
 {
     TSEvent* pE = TSEvent::GetSingleTon();
     pE->JSON_RegistEvent("ConnectGateWay", (void*)this, (TpInstEventJsonFun)&TSMainLayout::TSEventConnectGateWay);
+    pE->JSON_RegistEvent("RegistUUID", (void*)this, (TpInstEventJsonFun)&TSMainLayout::TSEventRegistUUID);
     pE->RegistEvent("Disconnect", (void*)this, (TpInstEventFun)&TSMainLayout::TSEventDisconnect);
 }
 
 TSMainLayout::~TSMainLayout()
 {
     TSEvent* pE = TSEvent::GetSingleTon();
-    pE->JSON_UnRegistEvent("ConnectGateWay", (void*)this);
-    pE->UnRegistEvent("Disconnect", (void*)this);
+    pE->JSON_UnRegistEvent("ConnectGateWay");
+    pE->JSON_UnRegistEvent("RegistUUID");
+    pE->UnRegistEvent("Disconnect");
 }
 
 // 连接适配服分配的网关;
@@ -88,24 +90,41 @@ void TSMainLayout::TSEventConnectGateWay( Json::Value jValue)
     //    "MM" : "ConnectGateWay",
     //    "Port" : 30000
     //}
-
+    TSEvent* pE = TSEvent::GetSingleTon();
     TSTCP* pT = TSTCP::GetSingleTon();
+    TSConnect* pC = TSConnect::GetSingleTon();
     TSLog("TSEventConnectGateWay: %s", jValue.toStyledString().c_str());
     TSTCP::GetSingleTon()->CloseSocket(); // 断开网关
     
+    std::string& sIP = jValue["IP"].asString();
+    int iPort = jValue["Port"].asInt();
+
     // 连接网关服
-    if (pT->CreateClient(jValue["IP"].asString(),jValue["Port"].asInt()) == 0) {
+    if (pT->CreateClient(sIP, iPort) == 0) {
         TSLog("GateWayConnect Failed!");
     } else {
         TSLog("GateWayConnect Success!");
+        TSConnect::GetSingleTon()->m_sWG_IP = sIP;
+        TSConnect::GetSingleTon()->m_iWG_Port = iPort;
     }
 }
 
 void TSMainLayout::TSEventDisconnect( std::string sBuffer )
 {
+    TSConnect* pC = TSConnect::GetSingleTon();
     TSLog("TSEventDisconnect %s", sBuffer.c_str());
-    TSConnect::getSingleTon()->ReConnect();
+    if (pC->m_iUUID)
+    {
+        pC->ReConnect();
+    }
 }
+
+void TSMainLayout::TSEventRegistUUID( Json::Value jValue )
+{
+    TSConnect* pC = TSConnect::GetSingleTon();
+    pC->m_iUUID = jValue["UUID"].asInt();
+}
+
 
 
 

@@ -12,7 +12,7 @@ public:
     TSConnect();
     ~TSConnect();
 
-    static TSConnect* getSingleTon(){
+    static TSConnect* GetSingleTon(){
         static TSConnect tsh;
         return &tsh;
     }
@@ -30,7 +30,7 @@ public:
     int m_iWG_Port;         //端口号
 
     //UUID
-    std::string m_sUUID;    //网关分配给客户端的唯一ID
+    int m_iUUID;    //网关分配给客户端的唯一ID
 protected:
 
 private:

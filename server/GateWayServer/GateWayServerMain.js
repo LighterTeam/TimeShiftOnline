@@ -75,7 +75,11 @@ function RunServer_TCP(iPORT, iUUID) {
             hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
             hSocket.CType = 1;
             G_PoolClientSocket[hSocket.UUID] = hSocket;
-            TSLog.info("TCP newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+            TSLog.debug("TCP newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+            var packet = {};
+            packet.MM = "RegistUUID";
+            packet.UUID = hSocket.UUID;
+            tcp.SendBuffer(hSocket, JSON.stringify(packet))
         }
     )
 }
@@ -102,7 +106,11 @@ function RunServer_WS(iPORT, iUUID) {
             hSocket.UUID = G_ClientUUID * cfg.GateWayServerPlayerIDRule + G_GateWay.UUID;
             hSocket.CType = 2;
             G_PoolClientSocket[hSocket.UUID] = hSocket;
-            TSLog.info("WebSocket newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+            TSLog.debug("WebSocket newSocket 网关客户数:" + G_ClientNumber + " UUID:" + hSocket.UUID);
+            var packet = {};
+            packet.MM = "RegistUUID";
+            packet.UUID = hSocket.UUID;
+            ws.SendBuffer(hSocket, JSON.stringify(packet))
         }
     );
 };
