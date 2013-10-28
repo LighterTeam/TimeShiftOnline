@@ -32,9 +32,7 @@ static void recvHandle(unsigned char *rbuf, size_t len)
     TSTCP::GetSingleTon()->Lock();
     {
         memset(buffer,0,sizeof(buffer));
-        memcpy(buffer, (char*)(rbuf), len);    
-        std::string& serverRecv = std::string("ServerRecv: ") + buffer;
-        TSLog("%s", serverRecv.c_str());
+        memcpy(buffer, (char*)(rbuf), len);
 
         Json::Reader reader;
         Json::Value root;
@@ -59,7 +57,7 @@ static void* GF_thread_function(void *arg)
     std::string IP = pTCP->m_sIP;
     int Port = pTCP->m_iPort;
 
-    char cBuffer[1024] = {0};
+    char cBuffer[1024*8] = {0};
 
     exbuffer_t* exB;
     exB = exbuffer_new();
@@ -67,7 +65,7 @@ static void* GF_thread_function(void *arg)
 
     for (;;) {
         memset(cBuffer, 0, sizeof(cBuffer));
-        int bufLen = recv(tcpsocket, cBuffer, 1024, 0);
+        int bufLen = recv(tcpsocket, cBuffer, 1024*8, 0);
         if (bufLen == -1)
         {
             pTCP->m_hSocket = 0;
