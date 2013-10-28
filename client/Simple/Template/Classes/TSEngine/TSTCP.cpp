@@ -26,29 +26,32 @@ TSTCP::TSTCP()
 
 }
 
-char buffer[1024*16] = {0};
+char G_PacketBuffer[1024*16] = {0};
+char G_TCPBuffer[1024*8] = {0};
+
 static void recvHandle(unsigned char *rbuf, size_t len)
 {
     TSTCP::GetSingleTon()->Lock();
     {
-        memset(buffer,0,sizeof(buffer));
-        memcpy(buffer, (char*)(rbuf), len);
+        memset(G_PacketBuffer,0,sizeof(G_PacketBuffer));
+        memcpy(G_PacketBuffer, (char*)(rbuf), len);
 
         Json::Reader reader;
         Json::Value root;
-        if (reader.parse(buffer, root))  
+        if (reader.parse(G_PacketBuffer, root))  
         {
             std::string sHeader = root["MM"].asString();
             TSEvent::GetSingleTon()->JSON_PushMessge(sHeader, root);
         }
         else
         {
-            std::string& sHeader = TSEngine::GetHeader(buffer, len);
-            TSEvent::GetSingleTon()->PushMessge(sHeader, buffer);
+            std::string& sHeader = TSEngine::GetHeader(G_PacketBuffer, len);
+            TSEvent::GetSingleTon()->PushMessge(sHeader, G_PacketBuffer);
         }
     }
     TSTCP::GetSingleTon()->UnLock();
 }
+
 
 static void* GF_thread_function(void *arg) 
 {
@@ -57,15 +60,14 @@ static void* GF_thread_function(void *arg)
     std::string IP = pTCP->m_sIP;
     int Port = pTCP->m_iPort;
 
-    char cBuffer[1024*8] = {0};
-
+    memset(G_TCPBuffer,0,sizeof(G_TCPBuffer));
     exbuffer_t* exB;
     exB = exbuffer_new();
     exB->recvHandle = recvHandle;
 
     for (;;) {
-        memset(cBuffer, 0, sizeof(cBuffer));
-        int bufLen = recv(tcpsocket, cBuffer, 1024*8, 0);
+        memset(G_TCPBuffer, 0, sizeof(G_TCPBuffer));
+        int bufLen = recv(tcpsocket, G_TCPBuffer, 1024*8, 0);
         if (bufLen == -1)
         {
             pTCP->m_hSocket = 0;
@@ -73,7 +75,7 @@ static void* GF_thread_function(void *arg)
         }
         
         if (bufLen > 0) {
-            exbuffer_put(exB,(unsigned char*)cBuffer,0,bufLen);
+            exbuffer_put(exB,(unsigned char*)G_TCPBuffer,0,bufLen);
         }
     }
 
