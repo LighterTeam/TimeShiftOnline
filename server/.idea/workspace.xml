@@ -116,7 +116,16 @@
       <file leaf-file-name="AdaptServerMain.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="9" selection-start="5423" selection-end="5423" vertical-scroll-proportion="0.85385877" vertical-offset="4055" max-vertical-offset="5150">
+            <state line="134" column="0" selection-start="3927" selection-end="3927" vertical-scroll-proportion="0.5802198" vertical-offset="3086" max-vertical-offset="5150">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GateWayServerMain.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="244" column="5" selection-start="7705" selection-end="7705" vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="6450">
               <folding />
             </state>
           </provider>
@@ -125,7 +134,7 @@
       <file leaf-file-name="TCP.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="3025">
+            <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="3025">
               <folding />
             </state>
           </provider>
@@ -228,7 +237,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="LighterWebEngine" />
+              <option name="myItemId" value="GateWayServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LighterWebPlatform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdaptServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -243,7 +266,7 @@
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="settings.github" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HTTPServer/HTTPServer.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JLTX" />
     <property name="FullScreen" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -435,18 +458,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="0" width="1366" height="768" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264095" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286219" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.40801188" order="1" side_tool="true" content_ui="tabs" x="991" y="79" width="356" height="358" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.59050447" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.29970327" order="1" side_tool="true" content_ui="tabs" x="991" y="79" width="356" height="358" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.43323442" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35231316" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20327625" sideWeight="0.7216312" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789317" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26557863" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26557863" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32685512" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -498,6 +521,20 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="9" selection-start="5423" selection-end="5423" vertical-scroll-proportion="0.0" vertical-offset="4055" max-vertical-offset="5150">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="3025">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/TSGameLayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="20" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="17975" />
@@ -528,54 +565,24 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="647" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GateWayServerMain2.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="634" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GateWayServerMain3.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GateWayServerMain4.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="250" column="44" selection-start="7850" selection-end="7850" vertical-scroll-proportion="0.0" vertical-offset="5828" max-vertical-offset="6450">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Common/Config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.33230293" vertical-offset="35" max-vertical-offset="700">
-          <folding />
-        </state>
+        <state line="10" column="4" selection-start="351" selection-end="351" vertical-scroll-proportion="0.33230293" vertical-offset="35" max-vertical-offset="700" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="348" column="6" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="8473" max-vertical-offset="9000">
-          <folding />
-        </state>
+        <state line="348" column="6" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="8473" max-vertical-offset="9000" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/StructDefine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="22" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
-          <folding />
-        </state>
+        <state line="10" column="22" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="2" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1033" max-vertical-offset="1675">
-          <folding />
-        </state>
+        <state line="60" column="2" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1033" max-vertical-offset="1675" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
@@ -585,9 +592,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="244" column="5" selection-start="7705" selection-end="7705" vertical-scroll-proportion="0.0" vertical-offset="1890" max-vertical-offset="6450">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="9" selection-start="5423" selection-end="5423" vertical-scroll-proportion="0.85385877" vertical-offset="4055" max-vertical-offset="5150">
+        <state line="134" column="0" selection-start="3927" selection-end="3927" vertical-scroll-proportion="0.5802198" vertical-offset="3086" max-vertical-offset="5150">
           <folding />
         </state>
       </provider>

@@ -90,7 +90,6 @@ function GetTCPGWList() {
     for (var i = 0 ; i < Pool_GateWay.length ; i++) {
         if (Pool_GateWay[i].Type === 1) {
             TCPList.push(Pool_GateWay[i]);
-            break;
         }
     }
     return TCPList;
@@ -102,7 +101,6 @@ function GetWSGWList() {
     for (var i = 0 ; i < Pool_GateWay.length ; i++) {
         if (Pool_GateWay[i].Type === 2) {
             WSList.push(Pool_GateWay[i]);
-            break;
         }
     }
     return WSList;
@@ -131,6 +129,7 @@ tcp.CreateServer(cfg.AdaptServerPort_TCP,
                     return;
                 }
 
+                TSLog.debug("G_ClientNumberTCP:" + G_ClientNumberTCP + " len:" + list.length);
                 var index = (G_ClientNumberTCP - 1) % list.length;
                 var GW = list[index];
 
@@ -172,6 +171,7 @@ ws.CreateServer(cfg.AdaptServerPort_WS,
                     return;
                 }
 
+                TSLog.debug("G_ClientNumberWS:" + G_ClientNumberWS + " len:" + list.length);
                 var index = (G_ClientNumberWS - 1) % list.length;
                 var GW = list[index];
 
