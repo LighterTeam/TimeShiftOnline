@@ -8,11 +8,11 @@
 using namespace cocos2d;
 using namespace std;
 
-class TSMainLayout : public TSObject, public cocos2d::CCLayer
+class TSMainScene : public TSObject, public cocos2d::CCLayer
 {
 public:
-    TSMainLayout();
-    ~TSMainLayout();
+    TSMainScene();
+    ~TSMainScene();
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
@@ -24,14 +24,20 @@ public:
     void draw();
 
     // implement the "static node()" method manually
-    CREATE_FUNC(TSMainLayout);
+    CREATE_FUNC(TSMainScene);
 
     // Message
     void TSEventConnectGateWay(Json::Value jValue);
     void TSEventRegistUUID(Json::Value jValue);
     void TSEventDisconnect(std::string sBuffer);
+
+private:
+    void menuCloseCallback(CCObject*);
+
 public:
     CCSprite* m_rb;
+    CCNode* m_cn;
+    CCSprite* m_pSprite;
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

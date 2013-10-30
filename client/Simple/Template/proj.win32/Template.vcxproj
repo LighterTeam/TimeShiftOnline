@@ -135,6 +135,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Common\Define\TSDump.h" />
+    <ClInclude Include="..\Classes\Common\Interface\crash_interface.h" />
+    <ClInclude Include="..\Classes\Common\Interface\ITSComSystem.h" />
+    <ClInclude Include="..\Classes\Common\TSCom\TSCom.hpp" />
+    <ClInclude Include="..\Classes\Common\TSCom\TSError.hpp" />
+    <ClInclude Include="..\Classes\Common\TSCom\TSGUID.hpp" />
+    <ClInclude Include="..\Classes\Common\TSCom\TSUnknown.hpp" />
     <ClInclude Include="..\Classes\JsonCpp\json_batchallocator.h" />
     <ClInclude Include="..\Classes\TSEngine\exbuffer.h" />
     <ClInclude Include="..\Classes\TSEngine\TSCommon.h" />

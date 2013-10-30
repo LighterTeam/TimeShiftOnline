@@ -3,6 +3,12 @@
 #include "CCEGLView.h"
 //#include "json/json.h"
 
+#ifdef WIN32
+#include "Common/Interface/crash_interface.h"
+#include <tchar.h>
+const TCHAR* SCENE_CRASH_DUMP = _T("SceneCrashDump");
+#endif
+
 USING_NS_CC;
 
 // uncomment below line, open debug console
@@ -28,6 +34,11 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                        int       nCmdShow)
 {
     //ParseJsonFromString();
+#ifdef WIN32
+    ICrashDump* pDumpSys = nullptr;
+    HRESULT hr = CoTsCreateInstance(CRASH_DUMP_LIBRARY,ICrashDumpGUID,(void**)&pDumpSys);
+    pDumpSys->Initialize(SCENE_CRASH_DUMP);
+#endif
 
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);

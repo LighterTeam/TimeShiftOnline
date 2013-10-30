@@ -55,7 +55,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
 
     // create a scene. it's an autorelease object
-    CCScene* pScene= TSMainLayout::scene();
+    CCScene* pScene= TSMainScene::scene();
     // run
     pDirector->runWithScene(pScene);
     return true;

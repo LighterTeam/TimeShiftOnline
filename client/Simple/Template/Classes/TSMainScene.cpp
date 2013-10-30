@@ -8,7 +8,7 @@
 using namespace cocos2d;
 using namespace std;
 
-CCScene* TSMainLayout::scene()
+CCScene* TSMainScene::scene()
 {
     CCScene * scene = NULL;
     do 
@@ -18,7 +18,7 @@ CCScene* TSMainLayout::scene()
         CC_BREAK_IF(! scene);
 
         // 'layer' is an autorelease object
-        TSMainLayout *layer = TSMainLayout::create();
+        TSMainScene *layer = TSMainScene::create();
         CC_BREAK_IF(! layer);
 
         // add layer as a child to scene
@@ -29,7 +29,7 @@ CCScene* TSMainLayout::scene()
     return scene;
 }
 
-bool TSMainLayout::init()
+bool TSMainScene::init()
 {
     bool bRet = false;
     do 
@@ -37,10 +37,35 @@ bool TSMainLayout::init()
         CC_BREAK_IF(! CCLayer::init());
         CCSize size = CCDirector::sharedDirector()->getWinSize();
 
-        CCSprite* pSprite = CCSprite::create("HelloWorld.png");
+        CCMenuItemImage * pCloseItem = CCMenuItemImage::create(
+            "CloseNormal.png", 
+            "CloseSelected.png", 
+            this, 
+            menu_selector(TSMainScene::menuCloseCallback));
+        CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+        pMenu->setPosition(size.width-20,20);
+        this->addChild(pMenu, 1);
+
+        m_cn = CCNode::create();
+        m_cn->setPosition(size.width/2, size.height/2);
+
+        m_pSprite = CCSprite::create("HelloWorld.png");
+        CC_BREAK_IF(! m_pSprite);
+        m_pSprite->setAnchorPoint(ccp(0.5f,0.0f));
+        m_cn->addChild(m_pSprite, 0);
+        
+        CCSprite* pSprite = CCSprite::create("CloseNormal.png");
         CC_BREAK_IF(! pSprite);
-        pSprite->setPosition(ccp(size.width/2, size.height/2));
-        this->addChild(pSprite, 0);
+        pSprite->setPosition(ccp(0, -320));
+        m_cn->addChild(pSprite, 2);
+
+        CCAction* ac = CCMoveTo::create(5.0f, ccp(0,0));
+        pSprite->runAction(ac);
+
+        pSprite = nullptr;
+        pSprite->setPosition(ccp(0, -320));
+
+        this->addChild(m_cn);
 
         setTouchEnabled(true);
 
@@ -51,30 +76,42 @@ bool TSMainLayout::init()
     return bRet;
 }
 
-void TSMainLayout::onEnter(){
-    TSConnect::GetSingleTon()->initSocket(); // 初始化服务器连接
+void TSMainScene::menuCloseCallback(CCObject*) {
+    exit(0);
+}
 
+void TSMainScene::onEnter(){
+    TSConnect::GetSingleTon()->initSocket(); // 初始化服务器连接
     CCLayer::onEnter();
 }
 
-void TSMainLayout::onExit(){
+void TSMainScene::onExit(){
     CCLayer::onExit();
 }
 
-void TSMainLayout::draw()
+void TSMainScene::draw()
 {
     TSTCP::GetSingleTon()->ProcessMsg();
+
+    // Game [10/29/2013 Administrator]
+    float cp = m_cn->getRotation();
+    if(cp > 360.0f) {
+        cp = 0.0f;
+    }
+    m_cn->setRotation(cp + 1.0f);
+
+    m_pSprite->setRotation(cp + 1.0f);
 }
 
-TSMainLayout::TSMainLayout()
+TSMainScene::TSMainScene()
 {
     TSEvent* pE = TSEvent::GetSingleTon();
-    pE->JSON_RegistEvent("ConnectGateWay", (void*)this, (TpInstEventJsonFun)&TSMainLayout::TSEventConnectGateWay);
-    pE->JSON_RegistEvent("RegistUUID", (void*)this, (TpInstEventJsonFun)&TSMainLayout::TSEventRegistUUID);
-    pE->RegistEvent("Disconnect", (void*)this, (TpInstEventFun)&TSMainLayout::TSEventDisconnect);
+    pE->JSON_RegistEvent("ConnectGateWay", (void*)this, (TpInstEventJsonFun)&TSMainScene::TSEventConnectGateWay);
+    pE->JSON_RegistEvent("RegistUUID", (void*)this, (TpInstEventJsonFun)&TSMainScene::TSEventRegistUUID);
+    pE->RegistEvent("Disconnect", (void*)this, (TpInstEventFun)&TSMainScene::TSEventDisconnect);
 }
 
-TSMainLayout::~TSMainLayout()
+TSMainScene::~TSMainScene()
 {
     TSEvent* pE = TSEvent::GetSingleTon();
     pE->JSON_UnRegistEvent("ConnectGateWay");
@@ -83,7 +120,7 @@ TSMainLayout::~TSMainLayout()
 }
 
 // 连接适配服分配的网关;
-void TSMainLayout::TSEventConnectGateWay( Json::Value jValue)
+void TSMainScene::TSEventConnectGateWay( Json::Value jValue)
 {
     //{
     //    "IP" : "127.0.0.1",
@@ -109,7 +146,7 @@ void TSMainLayout::TSEventConnectGateWay( Json::Value jValue)
     }
 }
 
-void TSMainLayout::TSEventDisconnect( std::string sBuffer )
+void TSMainScene::TSEventDisconnect( std::string sBuffer )
 {
     TSConnect* pC = TSConnect::GetSingleTon();
     TSLog("TSEventDisconnect %s", sBuffer.c_str());
@@ -119,7 +156,7 @@ void TSMainLayout::TSEventDisconnect( std::string sBuffer )
     }
 }
 
-void TSMainLayout::TSEventRegistUUID( Json::Value jValue )
+void TSMainScene::TSEventRegistUUID( Json::Value jValue )
 {
     TSConnect* pC = TSConnect::GetSingleTon();
     pC->m_iUUID = jValue["UUID"].asInt();

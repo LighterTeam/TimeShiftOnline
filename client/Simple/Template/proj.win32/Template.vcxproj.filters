@@ -22,6 +22,15 @@
     <Filter Include="JsonCpp">
       <UniqueIdentifier>{04ed1da0-8f29-4e77-8544-3a264aa17c56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{1cce0547-9463-4f57-a3a5-ce632c73f4f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TSCom">
+      <UniqueIdentifier>{51605c34-324b-4f91-8262-a188ddd17126}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{9110e208-35fa-4a2a-a3b7-d5f06eb3578d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CatchMike.ico">
@@ -94,6 +103,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\TSEngine\TSLog.h">
       <Filter>TSEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\Interface\crash_interface.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\Interface\ITSComSystem.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\TSCom\TSCom.hpp">
+      <Filter>TSCom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\TSCom\TSError.hpp">
+      <Filter>TSCom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\TSCom\TSGUID.hpp">
+      <Filter>TSCom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\TSCom\TSUnknown.hpp">
+      <Filter>TSCom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Common\Define\TSDump.h">
+      <Filter>Define</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
