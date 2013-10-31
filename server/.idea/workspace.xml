@@ -116,7 +116,7 @@
       <file leaf-file-name="GateWayServerMain.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="30" selection-start="3658" selection-end="3658" vertical-scroll-proportion="2.061702" vertical-offset="1606" max-vertical-offset="6650">
+            <state line="103" column="30" selection-start="3658" selection-end="3658" vertical-scroll-proportion="1.4976816" vertical-offset="1606" max-vertical-offset="6650">
               <folding />
             </state>
           </provider>
@@ -190,7 +190,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -239,22 +238,31 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="settings.github" />
-    <property name="restartRequiresConfirmation" value="true" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JLTX" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Node.js.GateWayServerMain.js">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -263,14 +271,6 @@
       <option name="saveOutputToFile" value="false" />
       <option name="showConsoleOnStdErr" value="false" />
       <option name="showConsoleOnStdOut" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
@@ -446,8 +446,8 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264095" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286219" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.30118695" order="1" side_tool="true" content_ui="tabs" x="991" y="79" width="356" height="358" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.4347181" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.40949556" order="1" side_tool="true" content_ui="tabs" x="991" y="79" width="356" height="358" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21146686" sideWeight="0.59050447" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35231316" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20327625" sideWeight="0.7216312" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789317" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -478,9 +478,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.251235" sideWeight="0.6106965" order="1" side_tool="false" content_ui="tabs" x="985" y="126" width="356" height="358" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20790629" sideWeight="0.7240204" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27597955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -503,18 +503,21 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
+    <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="9" selection-start="5423" selection-end="5423" vertical-scroll-proportion="0.0" vertical-offset="4055" max-vertical-offset="5150">
+        <state line="103" column="30" selection-start="3658" selection-end="3658" vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="6650">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="9" selection-start="5423" selection-end="5423" vertical-scroll-proportion="0.0" vertical-offset="4055" max-vertical-offset="5150" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="3025">
-          <folding />
-        </state>
+        <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="3025" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HTTPServer/WebRoot/src/TSGameLayer.js">
@@ -554,9 +557,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/HallSystem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="348" column="6" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="8473" max-vertical-offset="9000">
-          <folding />
-        </state>
+        <state line="348" column="6" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="8473" max-vertical-offset="9000" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HallServer/StructDefine.js">
@@ -571,21 +572,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LighterWebEngine/TCP.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="3025">
-          <folding />
-        </state>
+        <state line="51" column="19" selection-start="1219" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="3025" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AdaptServer/AdaptServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="65" selection-start="4150" selection-end="4150" vertical-scroll-proportion="0.0" vertical-offset="3086" max-vertical-offset="5150">
-          <folding />
-        </state>
+        <state line="139" column="65" selection-start="4150" selection-end="4150" vertical-scroll-proportion="0.0" vertical-offset="3086" max-vertical-offset="5150" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GateWayServer/GateWayServerMain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="30" selection-start="3658" selection-end="3658" vertical-scroll-proportion="2.061702" vertical-offset="1606" max-vertical-offset="6650">
+        <state line="103" column="30" selection-start="3658" selection-end="3658" vertical-scroll-proportion="1.4976816" vertical-offset="1606" max-vertical-offset="6650">
           <folding />
         </state>
       </provider>

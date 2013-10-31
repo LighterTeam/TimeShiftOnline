@@ -4,6 +4,7 @@
 
 #include "TSMainScene.h"
 #include "TSConnect.h"
+#include "text_input_node/CCTextFieldTTF.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -62,10 +63,13 @@ bool TSMainScene::init()
         CCAction* ac = CCMoveTo::create(5.0f, ccp(0,0));
         pSprite->runAction(ac);
 
-        pSprite = nullptr;
-        pSprite->setPosition(ccp(0, -320));
-
         this->addChild(m_cn);
+
+        CCTextFieldTTF* text = CCTextFieldTTF::textFieldWithPlaceHolder(  
+        "Input Your Name...", "Arial", 20);
+        text->setPosition(ccp(size.width / 2, size.height / 2 + 40));  
+        this->addChild(text);
+        text->attachWithIME(); 
 
         setTouchEnabled(true);
 
