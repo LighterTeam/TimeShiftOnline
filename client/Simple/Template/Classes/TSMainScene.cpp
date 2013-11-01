@@ -1,10 +1,10 @@
 ﻿#include "TSEngine/TSTCP.h"
 #include "TSEngine/TSEvent.h"
 #include "TSEngine/TSLog.h"
+#include "Cocos2dxEx/TSActionAnimation.h"
 
 #include "TSMainScene.h"
 #include "TSConnect.h"
-#include "text_input_node/CCTextFieldTTF.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -55,6 +55,46 @@ bool TSMainScene::init()
         m_pSprite->setAnchorPoint(ccp(0.5f,0.0f));
         m_cn->addChild(m_pSprite, 0);
         
+        {
+            // 精灵帧缓存
+            CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+            // 添加 plist文件到缓存
+            cache->addSpriteFramesWithFile("explosion.plist");
+            // 创建数组用来存放帧序列
+            CCArray *animFrames = CCArray::create();
+
+            char str[64] = {0};
+            for (int i = 1; i <= 35; ++i) {
+                sprintf(str, "explosion_%02d.png", i);
+                CCSpriteFrame *frame = cache->spriteFrameByName(str);
+                CCLOG(str);
+                // 添加帧到数组
+                animFrames->addObject(frame);
+            }
+
+            // 用帧序列生成帧动画信息，设定帧间隔时间
+            CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames, 0.05f);
+            animation->setRestoreOriginalFrame(true);
+
+            // 动画缓存，取名字
+            CCAnimationCache::sharedAnimationCache()->addAnimation(animation, "Explosion");
+            // 获取第一帧
+            CCSpriteFrame *frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("explosion_01.png");
+
+            // 用名字在缓存取帧动画信息
+            CCAnimation *anim = CCAnimationCache::sharedAnimationCache()->animationByName("Explosion");
+            // 有动画信息生成动画
+            TSAnimate *animate = TSAnimate::create(anim, 30, 35);
+
+            // 用第一帧作静态图
+            CCSprite *first = CCSprite::createWithSpriteFrame(frame);
+            first->setPosition(ccp(100, 100));
+
+            // 执行动画
+            first->runAction(CCRepeatForever::create(animate));
+            m_cn->addChild(first);
+        }
+
         CCSprite* pSprite = CCSprite::create("CloseNormal.png");
         CC_BREAK_IF(! pSprite);
         pSprite->setPosition(ccp(0, -320));
@@ -65,11 +105,11 @@ bool TSMainScene::init()
 
         this->addChild(m_cn);
 
-        CCTextFieldTTF* text = CCTextFieldTTF::textFieldWithPlaceHolder(  
-        "Input Your Name...", "Arial", 20);
-        text->setPosition(ccp(size.width / 2, size.height / 2 + 40));  
-        this->addChild(text);
-        text->attachWithIME(); 
+        //CCTextFieldTTF* text = CCTextFieldTTF::textFieldWithPlaceHolder(  
+        //"Input Your Name...", "Arial", 20);
+        //text->setPosition(ccp(size.width / 2, size.height / 2 + 40));  
+        //this->addChild(text);
+        //text->attachWithIME(); 
 
         setTouchEnabled(true);
 

@@ -31,6 +31,9 @@
     <Filter Include="Define">
       <UniqueIdentifier>{9110e208-35fa-4a2a-a3b7-d5f06eb3578d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Cocos2dxEx">
+      <UniqueIdentifier>{3d92aba7-ed80-4fb6-83a8-d2ead08202a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CatchMike.ico">
@@ -125,6 +128,9 @@
     <ClInclude Include="..\Classes\Common\Define\TSDump.h">
       <Filter>Define</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Cocos2dxEx\TSActionAnimation.h">
+      <Filter>Cocos2dxEx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -165,6 +171,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\TSEngine\TSLog.cpp">
       <Filter>TSEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Cocos2dxEx\TSActionAnimation.cpp">
+      <Filter>Cocos2dxEx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
